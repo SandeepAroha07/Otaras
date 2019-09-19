@@ -1,0 +1,2 @@
+cd C:\mywork\AUTOMATION\testAutomationAnywhere\seleniumGrid\setup\node3
+java -Dwebdriver.ie.driver=C:\mywork\AUTOMATION\testAutomationAnywhere\seleniumGrid\IEDriverServer.exe -jar selenium-server-standalone-3.12.0.jar -role webdriver -hub http://localhost:4444/grid/register -port 5553 -browser "browserName=internet explorer,version=11"

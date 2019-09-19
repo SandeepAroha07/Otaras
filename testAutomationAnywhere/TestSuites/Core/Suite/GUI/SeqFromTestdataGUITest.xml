@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Test-class Suite">
+<!-- <suite name="Test-class Suite" thread-count="2">-->
+    <test name="Test-class test 1">
+        <parameter name="test-name" value="test-method One" />
+         <parameter name="testBrowserXML" value="skip" />
+        <classes>
+              <class name="com.companyname.testautomation.testscripts.uitest.GUITest" />
+        </classes>
+    </test>
+</suite>

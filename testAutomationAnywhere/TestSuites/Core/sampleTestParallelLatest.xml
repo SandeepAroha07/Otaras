@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Parallel test suite" verbose="2" parallel="tests" thread-count="5">
+  <test  name="Regression 1">
+  <parameter name="testBrowserXML" value="chrome"/>
+    <classes>
+     	<class name="com.companyname.testautomation.testscripts.login.SampleTestLatest"/>
+    </classes>
+  </test> <!-- Test -->
+  <test  name="Regression 2">
+  <parameter name="testBrowserXML" value="firefox"/>
+    <classes>
+     	<class name="com.companyname.testautomation.testscripts.login.SampleTestLatest"/>
+    </classes>
+  </test> <!-- Test -->
+</suite> <!-- Suite -->

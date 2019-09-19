@@ -1,0 +1,172 @@
+Functional Automated End to End testing Framework
+====================================================
+- Functional Testing
+- Services Testing 
+- GUI Testing
+- Security Testing
+- Performance
+
+Serivices
+=============
+http://mvqa1.us-east-1.elasticbeanstalk.com/api/....
+Authentication - Logged in user
+
+Backend
+========
+http://mvqa1.us-east-1.elasticbeanstalk.com/login / user0@ford.com - password
+mongodb://admin:admin123@ds115931.mlab.com:15931/munivisorqa1
+
+db.getCollection('entities').find({isMuniVisorClient:true})
+db.getCollection('entityusers').find({entityId:ObjectId("5b3e236ecba89f6a99684e53")})
+db.getCollection('entityrels').find({entityParty1:ObjectId("5b3e235ccba89f6a996838df"),relationshipType:"Third Party"})
+db.getCollection('configs').find({entityId:ObjectId("5b3e235ccba89f6a996838df")})
+
+Entities
+EntityUser
+EntityRels
+Config ( Entity Level )
+Deals - Exists
+RFPs - This exists
+BLs
+...
+...
+...
+
+==================
+Reference Data
+--------------
+
+Ross Financial ( Financial advisor - 700 )
+- Naveen ( Admin )
+- Anil
+Cities / counties / states ( Clients - 560000)
+- NY ( John )
+- State of California ( kerry )
+- Elicticity atlant
+- county of middlesex
+Third Parties
+- Law Firm ( 
+- Underwriting Firm
+- Escrow Agents Firms
+
+Transaction ( Deal / RFP )
+----------------------------
+TranID - Deal Issue - TD1
+
+FA : Ross Financial
+Client : School of Atlanta
+
+Underwriter - Bank of America ( Lead ) ; PNC ; stifel
+Law Firm: LW1
+Escrow agent : EA1
+
+TranID - Deal Issue - TD2
+
+FA : Ross Financial
+Client : City of Charlotte
+
+Underwriter - GS , Wells Fargo
+Law Firm: LW1
+Escrow agent : EA2
+
+RFPID - R1
+Evaluation Team ( Team from ROSS + School of Atlata )
+Process Contacts ( Team from ROSS + School of Atlata )
+Participant ( Und : Goldman, wellsfargo.......)
+
+participant responses
+evaluate
+Rate
+Finalize
+
+Entitlements
+===================
+
+h1. Getting Entitled Transactions for Logged in User
+* EntityUser.userEntitlement can have the following values : global-readonly ; global-edit ; tran-edit ; global-readonly-tran-edit ; tran-readonly 
+
+*What is Global*
+*  Global means all the transactions where the entity associated with the logged in user is part of the participants list.
+* Let us illustrate this with an example
+
+<pre
+Transactions => T1: { Naveen, Deepak} , T2 : { Umesh, Deepak } , T3 : { Kapil, Mayur }, T4 : { Kapil, Naveen }
+E1: { Naveen, Umesh,Kapil }, E2 : { Deepak }, E3 : {  Mayur }
+
+Logged in user is "Naveen" :  transactions accessible for Naveen : T1, T2, T3, T4
+Logged in user is "Deepak" : transactions accessible for Deepak : T1, T2
+</pre>
+
+*What is Transaction Specific Access*
+*  Transaction access will restrict users access to only those transactions where they are directly involved..
+* Let us illustrate this with an example
+
+<pre
+Transactions => T1: { Naveen, Deepak} , T2 : { Umesh, Deepak } , T3 : { Kapil, Mayur }, T4 : { Kapil, Naveen }
+E1: { Naveen, Umesh,Kapil }, E2 : { Deepak }, E3 : {  Mayur }
+
+Logged in user is "Naveen" :  transactions accessible for Naveen : T1,T4
+Logged in user is "Kapil" : transactions accessible for Kapil : T3,T4
+</pre>
+
+
+*Details of the entitlements*
+* global-readonly : Can read all the transactions that their related entity has participated in.
+* global-edit : Can read and edit all transactions that their related entity is involved in.
+* tran-edit : Can only read and edit the transactions where the logged in user is in the participants list
+* tran-readonly : Can only read the transactions where the logged in user is in the participants list
+* gloabl-readonly-tran-edit : Can read all transactions but can edit the transactions where the user is in the participants list
+
+*How to get all the transactions for the eligible users*
+<pre>
+import {  getEligibleTransactionsForLoggedInUser,checkTranEligiblityForLoggedInUser} from server\serversrc\api\commonDbFunctions
+await getEligibleTransactionsForLoggedInUser(user)
+The return object will have shape as below.
+{
+  "loggedInUserId": "5b3729afa180c33d04ec77b7",
+  "loggedInUserEntityId": "5b3729aca180c33d04ebefb2",
+  "rfps": [
+    {
+      "tranId": "5b3729dda180c33d04f36475",
+      "canEditTran": true,
+      "canViewTran": true
+    },
+    {
+      "tranId": "5b3729dda180c33d04f3642d",
+      "canEditTran": true,
+      "canViewTran": true
+    },
+
+  "deals": [
+    {
+      "tranId": "5b3729dda180c33d04f365d1",
+      "canEditTran": true,
+      "canViewTran": true
+    },
+    {
+      "tranId": "5b3729dea180c33d04f369b3",
+      "canEditTran": true,
+      "canViewTran": true
+    }
+}
+</pre>
+
+*Check if the user has read / edit privileges on a given transaction*
+<pre>
+import {  getEligibleTransactionsForLoggedInUser,checkTranEligiblityForLoggedInUser} from server\serversrc\api\commonDbFunctions
+// Pass the user and the transaction ID
+// This can be any transaction ID - RFP, Deal, Bank Loans etc.
+await checkTranEligiblityForLoggedInUser(user,tranId)
+//The return object will have shape as below.
+{
+ "loggedInUserId": "5b3729afa180c33d04ec77b7",
+"loggedInUserEntityId": "5b3729aca180c33d04ebefb2",
+"tranId": "5b3729dda180c33d04f36475",
+"canEditTran": true,
+"canViewTran": true
+}
+</pre>
+
+
+
+

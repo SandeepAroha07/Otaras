@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Test-class Suite" parallel="tests" thread-count="9">
+<!-- <suite name="Test-class Suite" thread-count="2">-->
+   
+     <test name="Test-class test 1">
+        <parameter name="test-name" value="test-method One" /> 
+         <parameter name="testBrowserXML" value="chrome" />
+        <classes>
+          <class name="com.otaras.testautomation.testscripts.apptest.ford.functionaltest.newtran.activity.DebtBondAddTest" />
+       
+      </classes>
+    </test>
+    
+      
+   
+</suite>
+
+   
+  

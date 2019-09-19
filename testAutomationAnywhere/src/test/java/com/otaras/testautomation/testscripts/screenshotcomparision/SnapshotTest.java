@@ -1,0 +1,490 @@
+package com.otaras.testautomation.testscripts.screenshotcomparision;
+//package com.companyname.testautomation.testscripts.screenshotcomparision;
+//
+//import java.util.concurrent.TimeUnit;
+//
+//import javax.imageio.ImageIO;
+//
+//import org.apache.poi.xssf.usermodel.XSSFSheet;
+//import org.apache.poi.xssf.usermodel.XSSFWorkbook;
+//import org.openqa.selenium.By;
+//import org.openqa.selenium.JavascriptExecutor;
+//import org.openqa.selenium.Keys;
+//import org.openqa.selenium.Platform;
+//import org.openqa.selenium.StaleElementReferenceException;
+//import org.openqa.selenium.WebDriver;
+//import org.openqa.selenium.WebElement;
+//import org.openqa.selenium.ie.InternetExplorerDriver;
+//import org.openqa.selenium.interactions.Actions;
+//import org.openqa.selenium.remote.DesiredCapabilities;
+//import org.openqa.selenium.remote.RemoteWebDriver;
+//import org.openqa.selenium.support.events.EventFiringWebDriver;
+//import org.openqa.selenium.support.ui.ExpectedConditions;
+//import org.openqa.selenium.support.ui.WebDriverWait;
+//import org.testng.ITestResult;
+//import org.testng.Reporter;
+//import org.testng.annotations.AfterClass;
+//import org.testng.annotations.AfterMethod;
+//import org.testng.annotations.AfterTest;
+//import org.testng.annotations.BeforeClass;
+//import org.testng.annotations.BeforeTest;
+//import org.testng.annotations.DataProvider;
+//import org.testng.annotations.Factory;
+//import org.testng.annotations.Listeners;
+//import org.testng.annotations.Parameters;
+//import org.testng.annotations.Test;
+//
+//import com.aventstack.extentreports.ExtentReports;
+//import com.aventstack.extentreports.ExtentTest;
+//import com.aventstack.extentreports.MediaEntityBuilder;
+//import com.aventstack.extentreports.Status;
+//import com.aventstack.extentreports.markuputils.ExtentColor;
+//import com.aventstack.extentreports.markuputils.Markup;
+//import com.aventstack.extentreports.markuputils.MarkupHelper;
+//import com.codoid.products.fillo.Recordset;
+//import com.companyname.testautomation.aut.buildprojectbusinessmodules.core.Pages;
+//import com.companyname.testautomation.aut.testdatarec.TestDataRec;
+//import com.companyname.testautomation.common.BrowserUtil;
+//import com.companyname.testautomation.common.Common;
+//import com.companyname.testautomation.common.DBTestResultUpdate;
+//import com.companyname.testautomation.common.ExtentManager;
+//import com.companyname.testautomation.common.GuiValidation;
+//import com.companyname.testautomation.common.InitializeDriver;
+//import com.companyname.testautomation.common.ReadTestConfig;
+//import com.companyname.testautomation.common.ReadTestData;
+//import com.companyname.testautomation.common.ResultLog;
+//import com.companyname.testautomation.common.webDriverEventListener;
+//
+//import io.github.bonigarcia.wdm.WebDriverManager;
+//import ru.yandex.qatools.ashot.AShot;
+//import ru.yandex.qatools.ashot.Screenshot;
+//import ru.yandex.qatools.ashot.comparison.ImageDiff;
+//import ru.yandex.qatools.ashot.comparison.ImageDiffer;
+//import ru.yandex.qatools.ashot.shooting.ShootingStrategies;
+//
+//import java.awt.image.BufferedImage;
+//import java.io.File;
+//import java.io.FileInputStream;
+//import java.io.IOException;
+//import java.net.MalformedURLException;
+//import java.net.URL;
+//import java.util.*;
+//import java.lang.reflect.Method;
+//
+//@Listeners(com.companyname.testautomation.common.TestListener.class)
+//public class SnapshotTest {
+//	  	private WebDriver driver;
+//	  	private EventFiringWebDriver driverEvent;
+//  		private webDriverEventListener eventListener;
+//  		private ExtentReports extentReport;
+//  		private ExtentTest testReport;
+//
+//  		private String sBrowser="";
+//    	String sBrowserFromTestData="";
+//    	long startTime;
+//    	
+//	    Map<Object, Object> map;
+//	    private String sTestID="";
+//    	static Recordset recordsetTestData;
+//    	static ArrayList<String> arrayListTestDataColumns;
+//    	
+//    	Pages pages;
+//    	ResultLog ResultLog;
+//    	DBTestResultUpdate DBTestResultUpdate;
+//    	InitializeDriver initializeDriver;
+//    	String sDriverType=ReadTestConfig.Get("DRIVER.TYPE");
+//    	GuiValidation GuiValidation;
+//    	BrowserUtil BrowserUtil;
+//
+//    	String testBrowserXML="";
+//    	String className = this.getClass().getSimpleName();
+//		static String testDataName="screenshotsCompare";
+//    	
+//	    @Factory (dataProvider="dataProviderMethod")
+//	    public SnapshotTest(Map<Object, Object> map){
+//	    	this.map=map;
+//	        this.sTestID=map.get("testID").toString();
+//	        this.sBrowserFromTestData=map.get("TestBrowser").toString();
+//	    }
+//
+//	    @DataProvider//(parallel=true)
+//	    public static Object[][] dataProviderMethod() throws Exception {
+////	      	ReadTestData.captureLoginEnvirnmentTestData();
+////	      	TestDataRec.TESTDATANAME="objectrepository";
+////		  	arrayListTestDataColumns=ReadTestData.readTestDataTableColumns("objectrepository");
+////			ReadTestData.mapTestDataTableColumns(arrayListTestDataColumns);
+////	      	recordsetTestData=ReadTestData.readTestData(TestDataRec.TESTDATANAME);
+////	        int lastRowNum=TestDataRec.TEST_SCENARIOS_COUNT;
+////	        Object[][] obj = new Object[lastRowNum][1];
+////	      	obj=ReadTestData.mapAllTestData(recordsetTestData);
+////	      	return obj;
+//	      	
+//	      	
+//	    	 HashMap<String, String> tableColumnNames=new HashMap<>();
+//		      	ReadTestData.captureLoginEnvirnmentTestData();
+//		      	//TestDataRec.TESTDATANAME="deal";
+//			  	arrayListTestDataColumns=ReadTestData.readTestDataTableColumns(testDataName);
+//			  	tableColumnNames=ReadTestData.mapTestDataTableColumns(arrayListTestDataColumns);
+//		      	recordsetTestData=ReadTestData.readTestData(testDataName);
+//		      	//TestDataRec.TEST_SCENARIOS_COUNT=recordsetTestData.getCount();
+//		      	//testScenariosCount=recordsetTestData.getCount();
+//		        int lastRowNum=recordsetTestData.getCount();//TestDataRec.TEST_SCENARIOS_COUNT;
+//		        Object[][] obj = new Object[lastRowNum][1];
+//		        TestDataRec.TESTDATACOLUMNSMAP=tableColumnNames;
+//		      	obj=ReadTestData.mapAllTestData(recordsetTestData);
+//		      	return obj;
+//	    }
+//
+//	    		
+//	    @Test
+//	    public void testCase1() throws InterruptedException, Exception{
+//	    	ResultLog.ReportTestEvent("INFO", "Execution Started Time: "+startTime);
+//	        System.out.println("Test 1");  
+//	        System.out.println("URL fromlogin hash map - -"+TestDataRec.TESTDATALOGINMAP.get("url")); 
+//	        
+//	        //TestDataRec.TESTTRANSACTIONDATAMAP=null;
+//	       // TestDataRec.TESTTRANSACTIONDATAMAP=map;
+//	        System.out.println("Test Data Used: " + map);
+//	        //pages.InvokeApplicationPage.launchApplicationNEW();
+//	        //testReport.log(Status.INFO, "<table><tr><th>DeviceName</th></tr><tr><td>OnePlus</td></tr></table");
+////	        ResultLog.ReportTestEvent("INFO", "Page Name: "+map.get("pageName").toString());
+////	        ResultLog.ReportTestEvent("INFO", "WebElement Name: "+map.get("webelementName").toString());
+////	        ResultLog.ReportTestEvent("INFO", "Element ID: "+map.get("elementValue").toString());
+//	        ResultLog.ReportTestEvent("INFO", "Test Data: "+map);
+//	        
+//		        
+//	        try{
+//	        	  pages.InvokeApplicationPage.launchApplication();
+//				  pages.InvokeApplicationPage.WaitForPage(pages.MainPage);
+//				  pages.MainPage.clickLoginIcon();
+//				  pages.MainPage.WaitForPage(pages.LoginPage);
+//
+//
+////				  pages.LoginPage.enterPassword();
+////				  pages.LoginPage.enterUsername();
+////				  pages.LoginPage.clickSignIn();
+//				  pages.LoginPage.loginToApplication();
+//				  pages.LoginPage.WaitForPage(pages.HomePage);
+////				  try{
+//				  //pages.MenuPage.clickNewMenu();
+//				  
+//				  
+//				  pages.MenuPage.clickUserDashboardMenu();
+//				  pages.MenuPage.clickProjectsSubMenu();
+//				  pages.MenuPage.WaitForPage(pages.DashboardPage);
+//				  pages.DashboardPage.clickNewTransaction();
+//				  
+//				  
+//				  BrowserUtil=new BrowserUtil(driver, testReport);
+//				  BrowserUtil.SwitchToBrowserSecondTab();
+//			
+//				  pages.DashboardPage.WaitForPage(pages.NewTransactionPage);
+//				  
+//				  
+//				  //LOGIN: Navigate to the page as per datasheet > use file name from datasheet > take screnshot and compare it.
+//				  
+//				 //<<<<<<<<<<<<<<<<<<<<<#########// ......CAPTURE EXPECTED SCREENSHOT IN FIREFOX AND THEN USE IT. OTHERWISE WILL THROW AN ERROR. SOme reason chrome did not work  - throws error when expected screenshot captured from other than firefox browser: com.sun.jdi.InvocationException occurred invoking method
+//				  
+//				  //https://github.com/yandex-qatools/ashot
+//				  //https://github.com/yandex-qatools/ashot#screenshot-comparison
+//				  String sProjectName=ReadTestConfig.GetProperty("TESTPROJECT.NAME");
+//				  File app = new File("src\\test\\resources\\testReport\\"+sProjectName+"\\", ReadTestConfig.Get("TEST.APPNAME")+"\\screenshots\\" );
+//				  
+//				  Date d=new Date();
+//					String screenshotFile=d.toString().replace(":", "_").replace(" ", "_")+".png";
+//					File classpathRoot = new File(System.getProperty("user.dir"));
+//				 
+//					String filePath=app.toString()+"\\"+screenshotFile;
+//				  
+//					Screenshot screenshot=new AShot()
+//				  .shootingStrategy(ShootingStrategies.viewportPasting(3000))
+//				  .takeScreenshot(driver);
+//				  ImageIO.write(screenshot.getImage(), "PNG", new File(filePath));
+//				 // ImageIO.write(screenshot.getImage(), "PNG", new File("C:\\AUTOMATION\\NEW\\ashot\\RFQ.png"));  
+//				  File appScreenshot = new File("screenshots\\");
+//				  String filePathScreenshot=appScreenshot.toString()+"\\"+screenshotFile;//SA
+//				  ResultLog.ReportTestEvent("INFO", "Actual Screenshot");
+//				 testReport.addScreenCaptureFromPath(filePathScreenshot);
+//				 
+//				 
+//				  
+////				  String filePathScreenshot=appScreenshot.toString()+"\\"+screenshotFile;//SA
+////				  
+////				  
+////				 // testReport.info("details").addScreenCaptureFromPath("C:\\AUTOMATION\\NEW\\testAutomationAnywhere\\src\\test\\resources\\testReport\\screenshots\\Mon_Jul_23_19_37_16_EDT_2018.png");
+////				  testReport.addScreenCaptureFromPath(filePathScreenshot);
+//				  
+////				  Screenshot screenshot1=new AShot()
+////						  .shootingStrategy(ShootingStrategies.viewportPasting(3000))
+////						  .takeScreenshot(driver);
+////						  ImageIO.write(screenshot1.getImage(), "PNG", new File("C:\\AUTOMATION\\NEW\\ashot\\anilPage2.png"));
+//				 String sfileName="";
+//				 sfileName=map.get("fileName").toString().trim();
+//				 		ResultLog.ReportTestEvent("INFO", "Expected Screenshot");
+//						  BufferedImage ReadImageObject=ImageIO.read(new File("src\\test\\resources\\testReport\\"+sProjectName+"\\", ReadTestConfig.Get("TEST.APPNAME")+"\\expectedscreenshots\\"+sfileName+".png"));
+//				 		//BufferedImage ReadImageObject=ImageIO.read(new File("C:\\AUTOMATION\\NEW\\testAutomationAnywhere\\src\\test\\resources\\testReport\\expectedscreenshots\\RFQ.png"));
+//						  appScreenshot = new File("expectedscreenshots\\");
+//						  filePathScreenshot=appScreenshot.toString()+"\\"+sfileName+".png";//SA
+//						 testReport.addScreenCaptureFromPath(filePathScreenshot);
+//						  
+//						  
+////						  File f = new File("C:\\AUTOMATION\\NEW\\ashot\\anilPage1.png");
+////						 BufferedImage image=ImageIO.read(f);
+////						 Screenshot image1;
+////						 image1=image;
+//						// Thread.sleep(61);
+//						  ResultLog.ReportTestEvent("INFO", "Difference Screenshot");
+//						//  BufferedImage actualImage=screenshot.getImage();
+//				 ImageDiff diff = new ImageDiffer().makeDiff(ReadImageObject,screenshot.getImage());
+//				 // ImageDiff diff = new ImageDiffer().makeDiff(ReadImageObject,actualImage);
+//				  //BufferedImage diffImage = diff.getMarkedImage(); // comparison result with marked differences
+//				  BufferedImage diffImage = diff.getMarkedImage(); // comparison result with marked differences
+//				 // ImageIO.write(diffImage, "PNG", new File("C:\\AUTOMATION\\NEW\\ashot\\anilDiffPagenew.png"));
+//				  
+//				  if (diff.hasDiff())
+//					  ResultLog.ReportTestEvent("FAIL", "Screenshot Mismatch Found: "+diff);
+//				  else
+//					  ResultLog.ReportTestEvent("PASS", "Screenshot Matches: "+diff);
+//				  
+////				  https://github.com/yandex-qatools/ashot/issues/120
+////					  
+////					  https://github.com/yandex-qatools/ashot
+////				  
+//					d=new Date();
+//					screenshotFile=d.toString().replace(":", "_").replace(" ", "_")+".png";
+//					classpathRoot = new File(System.getProperty("user.dir"));
+//				 
+//					filePath=app.toString()+"\\"+screenshotFile;
+//				  ImageIO.write(diffImage, "PNG", new File(filePath));
+//				  
+//				  appScreenshot = new File("screenshots\\");
+//					filePathScreenshot=appScreenshot.toString()+"\\"+screenshotFile;//SA
+//				  
+//				 // testReport.info("details").addScreenCaptureFromPath("C:\\AUTOMATION\\NEW\\testAutomationAnywhere\\src\\test\\resources\\testReport\\screenshots\\Mon_Jul_23_19_37_16_EDT_2018.png");
+//				  testReport.addScreenCaptureFromPath(filePathScreenshot);
+//				  Thread.sleep(61);
+//				  //ResultLog.takeScreenShot();
+//				  
+//				  //paintImage(screenshot, screenshot);
+//				  //ImageIO.write(diffImage.getImage(), "PNG", new File("C:\\AUTOMATION\\NEW\\ashot\\anilPage.png"));
+//				  
+////				  WebElement myWebElement = driver.findElement(By.xpath("//input[@name='rfpTranOtherTransactionType']"));
+////				  new AShot()
+////				  .shootingStrategy(ShootingStrategies.viewportPasting(3000))
+////				    .takeScreenshot(driver, myWebElement);
+////				  ImageIO.write(screenshot.getImage(), "PNG", new File("C:\\AUTOMATION\\NEW\\ashot\\anilElement.png"));
+//				  //ImageIO.write(screenshot.getImage(), "gif", new File("C://Users/Rou/Desktop/image.gif"));
+//
+//				  //Screenshot screenshot=new AShot().shootingStrategy(ShootingStrategies.viewportPasting(1000));
+//				  
+//				 // https://sqa.stackexchange.com/questions/12029/how-do-i-work-with-dropdowns-in-selenium-webdriver
+//				  
+//				 // GuiValidation.UITestValidation(map);
+//				 // ResultLog.takeScreenShot();
+//				  
+////				  String elementValue=map.get("elementValue").toString().trim();
+////				  String xyz=driver.findElement(By.xpath("//section/div/div/div[2]/div[2]/input")).getText();
+////				  
+////				  driver.findElement(By.xpath("//*[contains(@name,'rfpTranOtherTransactionType')]")).getAttribute("value");
+//				  
+//				  //driver.findElement(By.xpath("//*[contains(@name,'rfpTranOtherTransactionType')]/following-sibling::small")).getText()
+//				  // working code - driver.findElement(By.xpath("//input[@name='rfpTranOtherTransactionType']/following-sibling::small")).getText();
+//				  
+//				  // best one - driver.findElement(By.xpath("//*[contains(text(),'Transaction Type')]/parent::div/div/div/select")).getAttribute("name");
+//				  
+//				  
+////				  driver.findElement(By.xpath("//*[contains(text(),'Transaction Type')]/parent::div/div/div/select")).getAttribute("name");
+////				  
+////				  driver.findElement(By.xpath("//*[contains(text(),'County')]/parent::div/div/select")).getAttribute("name");
+////				  driver.findElement(By.xpath("//*[contains(text(),'Other Transaction Type')]/parent::div/input")).getAttribute("name");
+////				  
+////				 // use this way - working - driver.findElement(By.xpath("//*[contains(text(),'Other Transaction Type')]/parent::div//*[contains(@name='rfpTranOtherTransactionType']")).getAttribute("name");
+////				  driver.findElement(By.xpath("//*[contains(text(),'Other Transaction Type')]/parent::div//*[contains(@name='rfpTranOtherTransactionType']")).getAttribute("name");
+//				  
+//				  // driver.findElement(By.xpath("//*[contains(@text(),'Transaction Type')]")).getText();
+//				  //did not work - but parent part is working   driver.findElement(By.xpath("//*[contains(text(),'Issuer')]/parent::div/div/div//*[contains(text(),'City of Tampa')]")).getAttribute("role");
+//				  //working - driver.findElement(By.xpath("//*[contains(text(),'Issuer')]/parent::div//*[contains(@role,'combobox')]")).getAttribute("role");
+//				  // working - driver.findElement(By.xpath("//*[contains(text(),'Transaction Type')]/parent::div//*[contains(@name,'rfpTranType')]")).getAttribute("name");
+//				  
+//				  
+//				  //working - ----- ********* driver.findElement(By.xpath("//*[contains(text(),'Transaction Type')]/parent::div//select")).getAttribute("name");
+//				  
+////				  try{
+////					  WebElement el = driver.findElement( By.cssSelector( "div.navbar-item:nth-child(2) > a:nth-child(1)" ) );
+////					     Actions builder = new Actions(driver);
+////					     builder.moveToElement( el ).click( el );
+////					     builder.perform();
+////				  }catch(Exception e){}
+//				  
+////				  }catch(Exception e){
+////				  //driver.findElement(By.xpath("//div/div/div/div/div[1]/nav/div[2]/div[2]/div[1]/div[2]")).click();
+////					  driver.findElement(By.xpath("/html/body/div/div/div/div/div[1]/nav/div[2]/div[2]/div[1]/div[2]")).click();
+////				  }
+////				  //driver.switchTo().frame(driver.findElement(By.name("iframeWithElement")));
+////				  
+////				//  Thread.sleep(10000);
+//////				  WebElement ele = driver.findElement(By.xpath("//a[contains(text(),'New')]"));
+//////				  JavascriptExecutor executor = (JavascriptExecutor)driver;
+//////				  executor.executeScript("arguments[0].click();", ele);
+////				  try{
+////				  List<WebElement> sMenuList = driver.findElements(By.xpath("//a[@class='navbar-link']"));
+////					 for (int i = 0; i<sMenuList.size();i++)
+////				    {
+////						 System.out.println("Menu Text:"+sMenuList.get(i).getText());
+////						 if(sMenuList.get(i).getText().equalsIgnoreCase("new"))
+////							{
+////							 //sMenuList.get(i).sendKeys(Keys.PAGE_UP);	
+////							 Thread.sleep(200);
+////							 sMenuList.get(i).click();
+////							 sMenuList.get(i).sendKeys(Keys.RETURN);
+////								break;
+////							}
+////			    }			  }catch (Exception e){}
+//////					  try{
+//////					  pages.MenuPage.clickNewMenu();
+//////					  }catch (Exception e1){
+//////						driver.findElement(By.xpath("//*[@id='navMenuDocumentation']/div[1]/div[2]/a")).click();
+//////						System.out.println("Exception Found");
+//////					  }
+//////				  }
+////				  
+////				  //Thread.sleep(200);
+////				  WebElement element = driver.findElement(By.id("//div/div/div/div/div[1]/nav/div[2]/div[2]/div[1]/div[2]"));
+////				  JavascriptExecutor executor = (JavascriptExecutor)driver;
+////				  executor.executeScript("arguments[0].click();", element);
+////				  Thread.sleep(5000);
+////				  pages.MenuPage.clickEntitySubMenu();
+////				  pages.MenuPage.WaitForPage(pages.CreateEntitySelectionPage);
+////				  pages.CreateEntitySelectionPage.SelectClient();
+////				  //Thread.sleep(1000);
+////				  //driver.navigate().refresh();
+////				  pages.CreateEntitySelectionPage.WaitForPage(pages.ClientFirmPage);
+//				//  pages.ClientFirmPage.selectFirmType();
+////				  try {
+////					    WebElement button = driver.findElement(By.xpath("//input[@name='issuerFlags']"));
+////					            button.click();
+////					}
+////					catch(org.openqa.selenium.StaleElementReferenceException ex)
+////					{
+////					    WebElement button = driver.findElement(By.xpath("//input[@name='issuerFlags']"));
+////					            button.click();
+////					}
+////				  ResultLog.takeScreenShot();
+////				  //Thread.sleep(500);
+////				 // pages.ClientFirmPage.ClientFirm.click();
+////				 
+////				  pages.ClientFirmPage.SelectFirmName();
+////				  //Thread.sleep(1000);
+////				  ResultLog.takeScreenShot();
+////		        
+////				  pages.HomePage.clickSignIn();
+////				  ResultLog.takeScreenShot();
+////				  
+////				  if (sTestID.toString().equalsIgnoreCase("sampleTest004"))
+////				    	throw new NullPointerException("Manually throws execption");
+////				  
+////				  if (sTestID.toString().equalsIgnoreCase("sampleTest003"))
+////				    	driver.findElement(By.xpath("iii")).click();
+////				  
+////				  pages.HomePage.WaitForPage(pages.LoginPage);
+////				  pages.LoginPage.enter_newCustemailAddres();
+////				  pages.LoginPage.enter_password();
+////				  pages.LoginPage.clickHome();
+////				  pages.LoginPage.WaitForPage(pages.HomePage);
+////				  pages.HomePage.clickSignIn();
+////				  pages.LoginPage.clickHome();
+////				  pages.LoginPage.WaitForPage(pages.HomePage);
+//				  
+////				  if(sTestID.equalsIgnoreCase("TID_UI_0006"))
+////					  throw new NullPointerException("Manually throws execption");
+//				  
+//				  
+//	        
+//				  //ResultLog.ReportTestEvent("PASS", "Test Passed");
+//				  if (testReport.getStatus().toString().equalsIgnoreCase("fail"))
+//					  ResultLog.ReportTestEvent("FAIL", "TEST STATUS: "+ testReport.getStatus().toString());
+//				  else
+//					  ResultLog.ReportTestEvent("PASS", "TEST STATUS: "+ testReport.getStatus().toString());
+//				  ResultLog.ReportTestEvent("INFO", "TEST EXECUTION COMPLETE");
+//				  //DBTestResultUpdate.UpdateTestResultInDB(testDataName, sTestID);
+//				  driver.quit();
+//	        }
+//			  catch (Exception e)
+//			  {
+//				  ResultLog.ReportTestEvent("FATAL","Entered Test 'Exception' Block-:"+" ******** Exception Found - Test Scenrario Execution Incomplete ********");
+//				  ResultLog.ReportTestEvent("FATAL", "TEST FAILED - EXCEPTION: "+e);
+//				  //DBTestResultUpdate.UpdateTestResultExceptionInDB(testDataName, sTestID);
+//				  driver.quit();
+//				throw new NullPointerException("******** Exception Found - Test Scenrario Execution Incomplete ********");
+//			  }
+//	    }
+//	    
+//		 
+//		   @BeforeClass
+//		    @Parameters({ "testBrowserXML" })
+//		    public void beforeClass(String testBrowserXML) throws Exception {
+//			 //  public void beforeClass() throws Exception {
+//		    	startTime = System.currentTimeMillis();
+//		        long id = Thread.currentThread().getId();
+//		        if (testBrowserXML.equalsIgnoreCase("skip")||testBrowserXML.equalsIgnoreCase("")||testBrowserXML.equalsIgnoreCase("param-val-not-found"))
+//		        	testBrowserXML=sBrowserFromTestData;
+////		        else if (testBrowserXML.equalsIgnoreCase(""))
+////		        	testBrowserXML=sBrowserFromTestData;
+//		        extentReport=ExtentManager.CreateExtentReportExtent();
+//		  	  	//testReport=ExtentManager.CreateExtentReportTest(extentReport,testBrowserXML,className+"_"+sTestID);
+//		        testReport=ExtentManager.CreateExtentReportTest(extentReport,testBrowserXML,className+"_"+sTestID);
+//		  	  	initializeDriver=new InitializeDriver();
+//		  	  	if (sDriverType.equalsIgnoreCase("remotedriver"))
+//		  	  		driver=initializeDriver.initRemoteWebDriver(testBrowserXML);
+//		  	  	else if (sDriverType.equalsIgnoreCase("webdriver"))
+//		  	  		driver=initializeDriver.initWebDriver(testBrowserXML);
+//		  	  	
+////		  	  	//working code
+////		  	   driverEvent = new EventFiringWebDriver(driver);
+////				  eventListener = new webDriverEventListener(testReport);
+////				  driverEvent.register(eventListener);
+////				  this.driver=driverEvent;
+////		  	  	// working code ends here
+//		  	  	
+//		  	  		pages=new Pages(driver,testReport);
+//		  	  		ResultLog=new ResultLog(driver,testReport);
+//		  	  		DBTestResultUpdate=new DBTestResultUpdate(driver,testReport);
+//		  	  		GuiValidation=new GuiValidation(driver,testReport);
+//		  	  	//GuiValidation.ResultLog=null;
+//		  	  		GuiValidation.ResultLog=ResultLog;
+//		  	  		GuiValidation.pages=pages;
+//			        ResultLog.ReportTestEvent("INFO", "Test Browser: "+testBrowserXML);
+//			        ResultLog.ReportTestEvent("INFO", "Test ID: "+sTestID);
+////		        driverEvent = new EventFiringWebDriver(driver);
+////				  eventListener = new webDriverEventListener(testReport);
+//////				  //testListener=new TestListener(testReport);
+////				  driverEvent.register(eventListener);
+////				  this.driver=driverEvent;
+////				  driverEvent.get("http://www.store.demoqa.com");
+//		    }
+//	    
+//
+//	 
+//	    @AfterClass
+//	    public void afterClass() {
+//	    	long stopTime = System.currentTimeMillis();
+//	        long elapsedTime = stopTime - startTime;
+//	        long seconds = TimeUnit.MILLISECONDS.toSeconds(elapsedTime);
+////	        elapsedTime=(elapsedTime/1000)%60;
+//	        System.out.println(elapsedTime);
+//	        ResultLog.ReportTestEvent("INFO","Test Execution Tme in Sec: "+seconds+ "  -------------------- Execution Time in mins:  "+TimeUnit.MILLISECONDS.toMinutes(elapsedTime));
+//	        long id = Thread.currentThread().getId();
+//	        System.out.println("After test-method  " + sTestID
+//	                + ". Thread id is: " + id);
+//	        extentReport.flush();
+//	    }
+//	 
+//	    @AfterTest
+//	    public void afterTest() {
+//	        long id = Thread.currentThread().getId();
+//	        System.out.println("After test  " + sTestID + ". Thread id is: " + id);
+//	    }
+//		 
+//	    
+//	    
+//}

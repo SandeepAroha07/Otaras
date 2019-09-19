@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Test-class Suite" parallel="tests" thread-count="5">
+<!-- <suite name="Test-class Suite" thread-count="2">-->
+   
+
+    
+      <test name="Test-class test 1" group-by-instances="true">
+        <parameter name="test-name" value="test-method One" /> 
+         <parameter name="testBrowserXML" value="chrome" />
+        <classes>
+             <class name="com.otaras.testautomation.testscripts.apptest.ford.functionaltest.newtran.activity.ContactTest" />
+        </classes>
+    </test>
+    
+   
+                <test name="Test-class test 2" group-by-instances="true">
+        <parameter name="test-name" value="test-method Two" /> 
+         <parameter name="testBrowserXML" value="chrome" />
+        <classes>
+           <class name="com.otaras.testautomation.testscripts.apptest.ford.functionaltest.admintest.thirdparty.ThirdPartyAddTest" />
+        </classes>
+    </test>  
+        
+    
+    
+</suite>
+

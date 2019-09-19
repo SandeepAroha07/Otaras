@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Test-class Suite" parallel="tests" thread-count="9">
+<!-- <suite name="Test-class Suite" thread-count="2">-->
+   
+     <test name="Test-class test 1">
+        <parameter name="test-name" value="test-method One" /> 
+         <parameter name="testBrowserXML" value="chrome" />
+        <classes>
+          <class name="com.otaras.testautomation.testscripts.apptest.ford.functionaltest.newtran.activity.DebtBondAddTest" />
+       
+      </classes>
+    </test>
+    
+         <test name="Test-class test 2">
+        <parameter name="test-name" value="test-method Two" /> 
+         <parameter name="testBrowserXML" value="chrome" />
+        <classes>
+         <class name="com.otaras.testautomation.testscripts.apptest.ford.functionaltest.newtran.activity.DebtBusinessDevelopmentAddTest" />
+       
+      </classes>
+    </test>
+    
+             <test name="Test-class test 3">
+        <parameter name="test-name" value="test-method Three" /> 
+         <parameter name="testBrowserXML" value="chrome" />
+        <classes>
+         <class name="com.otaras.testautomation.testscripts.apptest.ford.functionaltest.newtran.activity.DebtDerivativeAddTest" />
+       
+      </classes>
+    </test>
+    
+              <test name="Test-class test 4">
+        <parameter name="test-name" value="test-method Four" /> 
+         <parameter name="testBrowserXML" value="chrome" />
+        <classes>
+         <class name="com.otaras.testautomation.testscripts.apptest.ford.functionaltest.newtran.activity.DebtManageRFPforClientAddTest" />
+       
+      </classes>
+    </test>
+    
+    
+              <test name="Test-class test 4.1">
+        <parameter name="test-name" value="test-method FourPointOne" /> 
+         <parameter name="testBrowserXML" value="chrome" />
+        <classes>
+         <class name="com.otaras.testautomation.testscripts.apptest.ford.functionaltest.newtran.activity.DebtManageRFPforClient1AddTest" />
+       
+      </classes>
+    </test>
+    
+    
+              <test name="Test-class test 4.2">
+        <parameter name="test-name" value="test-method FourPointTwo" /> 
+         <parameter name="testBrowserXML" value="chrome" />
+        <classes>
+         <class name="com.otaras.testautomation.testscripts.apptest.ford.functionaltest.newtran.activity.DebtManageRFPforClient2AddTest" />
+       
+      </classes>
+    </test>
+                  <test name="Test-class test 5">
+        <parameter name="test-name" value="test-method Five" /> 
+         <parameter name="testBrowserXML" value="chrome" />
+        <classes>
+         <class name="com.otaras.testautomation.testscripts.apptest.ford.functionaltest.newtran.activity.DebtMARFPAddTest" />
+       
+      </classes>
+    </test>
+    
+                      <test name="Test-class test 6">
+        <parameter name="test-name" value="test-method Six" /> 
+         <parameter name="testBrowserXML" value="chrome" />
+        <classes>
+         <class name="com.otaras.testautomation.testscripts.apptest.ford.functionaltest.newtran.activity.DebtOtherActivityAddTest" />
+       
+      </classes>
+    </test>
+   
+</suite>
+
+   
+  

@@ -1,0 +1,1273 @@
+
+<!DOCTYPE html>
+<html>
+
+
+<head>
+	<meta charset='UTF-8' /> 
+	<meta name='description' content='' />
+	<meta name='robots' content='noodp, noydir' />
+	<meta name='viewport' content='width=device-width, initial-scale=1' />
+	<meta id="timeStampFormat" name="timeStampFormat" content='MMM d, yyyy hh:mm:ss a'/>
+	
+	<link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,600' rel='stylesheet' type='text/css' />
+	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+
+		<link href='https://cdn.rawgit.com/anshooarora/extentreports-java/b4a58fcfd1e137bd9287244035a7c80d3d73b3af/dist/css/extent.css' type='text/css' rel='stylesheet' />
+	
+	<title>Automated Test Execution</title>
+
+	<style type='text/css'>
+			
+            
+                
+            
+        
+	</style>
+</head>
+
+	<body class='extent standard default hide-overflow '>
+		<div id='theme-selector' alt='Click to toggle theme. To enable by default, use theme configuration.' title='Click to toggle theme. To enable by default, use theme configuration.'>
+			<span><i class='material-icons'>desktop_windows</i></span>
+		</div>
+
+<nav>
+	<div class="nav-wrapper">
+		<a href="#!" class="brand-logo blue darken-3">Extent</a>
+
+		<!-- slideout menu -->
+		<ul id='slide-out' class='side-nav fixed hide-on-med-and-down'>
+			<li class='waves-effect active'><a href='#!' view='test-view' onclick="configureView(0);chartsView('test');"><i class='material-icons'>dashboard</i></a></li>
+						<li class='waves-effect'><a href='#!' onclick="configureView(-1);chartsView('dashboard');" view='dashboard-view'><i class='material-icons'>track_changes</i></i></a></li>
+		</ul>
+
+		<!-- report name -->
+		<span class='report-name'>AutoTestResults</span>
+		
+		<!-- report headline -->
+		<span class='report-headline'></span>
+
+		<!-- nav-right -->
+		<ul id='nav-mobile' class='right hide-on-med-and-down nav-right'>
+			<li>
+                <a href='#!'>
+                    <span class='label suite-start-time blue darken-3'>Jun 5, 2019 10:56:05 PM</span>
+				</a>
+			</li>
+			<li>
+                <a href='#!'>
+                    <span class='label blue darken-3'>3.1.5</span>
+				</a>
+			</li>
+		</ul>
+	</div>
+</nav>
+
+		<!-- container -->
+		<div class='container'>
+
+<div id='test-view' class='view'>
+				
+	<section id='controls'>
+		<div class='controls grey lighten-4'>
+			<!-- test toggle -->
+			<div class='chip transparent'>
+				<a class='dropdown-button tests-toggle' data-activates='tests-toggle' data-constrainwidth='true' data-beloworigin='true' data-hover='true' href='#'>
+					<i class='material-icons'>warning</i> Status
+				</a>
+				<ul id='tests-toggle' class='dropdown-content'>
+											<li status='pass'><a href='#!'>Pass <i class='material-icons green-text'>check_circle</i></a></li>
+						<li status='fatal'><a href='#!'>Fatal <i class='material-icons red-text text-darken-3'>cancel</i></a></li>
+					<li class='divider'></li>
+					<li status='clear' clear='true'><a href='#!'>Clear Filters <i class='material-icons'>clear</i></a></li>
+				</ul>
+			</div>
+			<!-- test toggle -->
+
+			<!-- category toggle -->
+			<!-- category toggle -->
+
+			<!-- clear filters -->
+			<div class='chip transparent hide'>
+				<a class='' id='clear-filters' alt='Clear Filters' title='Clear Filters'>
+					<i class='material-icons'>close</i> Clear
+				</a>
+			</div>
+			<!-- clear filters -->
+
+			<!-- enable dashboard -->
+			<div id='toggle-test-view-charts' class='chip transparent'>
+				<a class='pink-text' id='enable-dashboard' alt='Enable Dashboard' title='Enable Dashboard'>
+					<i class='material-icons'>track_changes</i> Dashboard
+				</a>
+			</div>
+			<!-- enable dashboard -->
+
+			<!-- search -->
+			<div class='chip transparent' alt='Search Tests' title='Search Tests'>
+				<a href="#" class='search-div'>
+					<i class='material-icons'>search</i> Search
+				</a>
+
+				<div class='input-field left hide'>
+					<input id='search-tests' type='text' class='validate browser-default' placeholder='Search Tests...'>
+				</div>
+				
+			</div>
+			<!-- search -->
+		</div>
+	</section>
+
+
+<div id='test-view-charts' class='subview-full'>
+	<div id='charts-row' class='row nm-v nm-h'>
+		<div class='col s12 m6 l6 np-h'>
+			<div class='card-panel nm-v'>
+				<div class='left panel-name'>Tests</div>
+				<div class='chart-box'>
+					<canvas id='parent-analysis' width='100' height='80'></canvas>
+				</div>
+				<div class='block text-small'>
+					<span class='tooltipped' data-position='top' data-tooltip='0%'><span class='strong'>0</span> test(s) passed</span>
+				</div>
+				<div class='block text-small'>
+					<span class='strong tooltipped' data-position='top' data-tooltip='100%'>1</span> test(s) failed, <span class='strong tooltipped' data-position='top' data-tooltip='0%'>0</span> others
+				</div>
+			</div>
+		</div>
+		
+		<div class='col s12 m6 l6 np-h'>
+			<div class='card-panel nm-v'>
+				<div class='left panel-name'>Steps</div>
+				<div class='chart-box'>
+					<canvas id='child-analysis' width='100' height='80'></canvas>
+				</div>
+				<div class='block text-small'>
+					<span class='tooltipped' data-position='top' data-tooltip='5.263%'><span class='strong'>10</span> step(s) passed</span>
+				</div>
+				<div class='block text-small'>
+					<span class='strong tooltipped' data-position='top' data-tooltip='3.158%'>6</span> step(s) failed, <span class='strong tooltipped' data-position='top' data-tooltip='91.579%'>174</span> others
+				</div>
+			</div>
+		</div>
+		
+	</div>
+</div>
+
+	<div class='subview-left left'>
+		
+		<div class='view-summary'>
+			<h5>Tests</h5>
+			<ul id='test-collection' class='test-collection'>
+				
+				
+				<li class='test displayed active  fatal' status='fatal' bdd='false' test-id='1'>
+					<div class='test-heading'>
+						<span class='test-name'>TS_DebtBondParticipantsTest_participantsbonddealTest012_chrome</span>
+						<span class='test-time'>Jun 5, 2019 10:56:05 PM</span>
+						<span class='test-status right fatal'>fatal</span>
+					</div>
+					<div class='test-content hide'>
+<div class='test-time-info'>
+	<span class='label start-time'>Jun 5, 2019 10:56:05 PM</span>
+	<span class='label end-time'>Jun 5, 2019 10:56:42 PM</span>
+	<span class='label time-taken grey lighten-1 white-text'>0h 0m 36s+682ms</span>
+</div>
+	<div class='test-desc'>TEST RESULTS </div>
+	<div class='test-steps'>
+		<table class='bordered table-results'>
+			<thead>
+				<tr>
+					<th>Status</th>
+					<th>Timestamp</th>
+					<th>Details</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>10:56:11 PM</td>
+					<td class='step-details'><span><font color='blue';font-size:16px; line-height:20px>Test Browser: chrome</font></span></td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>10:56:11 PM</td>
+					<td class='step-details'><span><font color='blue';font-size:16px; line-height:20px>Test ID: participantsbonddealTest012</font></span></td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>10:56:11 PM</td>
+					<td class='step-details'><span><font color='blue';font-size:16px; line-height:20px>TEST EXECUTION STARTED</font></span></td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>10:56:11 PM</td>
+					<td class='step-details'><span><font color='blue';font-size:16px; line-height:20px>Execution Started Time: 1559789765285</font></span></td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>10:56:11 PM</td>
+					<td class='step-details'><span><font color='blue';font-size:16px; line-height:20px>Column Names: {ColumnName0=testID, ColumnName1=dealID, ColumnName2=testTransactionID, ColumnName3=documentId, ColumnName4=dealID, ColumnName5=summary_transactionStatus, ColumnName6=uwt_add, ColumnName7=uwt_addtodl, ColumnName8=uwt_firmname, ColumnName9=uwt_roleinsyndicate, ColumnName10=uwt_liability, ColumnName11=uwt_managementfee, ColumnName12=uwt_action, ColumnName13=uwt_actionstatus, ColumnName14=odp_addtodl, ColumnName15=odp_participanttype, ColumnName16=odp_firmname, ColumnName17=odp_contactname, ColumnName18=odp_addresses, ColumnName19=Add_to_ DL, ColumnName20=odp_addressline1, ColumnName21=odp_state, ColumnName22=odp_phone, ColumnName23=odp_email, ColumnName24=odp_action, ColumnName25=odp_actionStatus, ColumnName26=TestType, ColumnName27=TestBrowser, ColumnName28=TestComplexity, ColumnName29=TestInScope, ColumnName30=TestStatus, ColumnName31=TestBy, ColumnName32=TestDate, ColumnName33=TestMachine, ColumnName34=TestExecutionTime, ColumnName35=TestCycle, ColumnName36=COLUMN_36}</font></span></td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>10:56:11 PM</td>
+					<td class='step-details'><span><font color='blue';font-size:16px; line-height:20px>Test Data: {testID=participantsbonddealTest012, dealID=Anil-e, testTransactionID=transaction48, documentId=5c81e909c97bc1061c8875e5, summary_transactionStatus=Debt, uwt_add=add, uwt_addtodl=checked, uwt_firmname=Goldman Sachs, uwt_roleinsyndicate=Co-Manager, uwt_liability=5, uwt_managementfee=15, uwt_action=save, uwt_actionstatus=Deal Underwriting Team has been updated, odp_addtodl=add, odp_participanttype=Underwriting Services, odp_firmname=Morgan Stanley, odp_contactname=Brooke Baby, odp_addresses=Corporate Office 3, Add_to_ DL=Checked, odp_addressline1=Hosrace Oval, odp_state=Pennsylvania, odp_phone=4441197168, odp_email=User2@finadvisor1.com, odp_action=save, odp_actionStatus=Deal transaction has been updated, TestType=Automated, TestBrowser=chrome, TestComplexity=Functional, TestInScope=, TestStatus=Failed-Incomplete/Exception, TestBy=adit_aadhya, TestDate=Sat Mar 09 12:44:43 EST 2019, TestMachine=LAPTOP-9D0T83F5, TestExecutionTime=38, TestCycle=, COLUMN_36=}</font></span></td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>10:56:11 PM</td>
+					<td class='step-details'><span><font color='blue';font-size:16px; line-height:20px>LAUNCH APPLICATION</font></span></td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>10:56:11 PM</td>
+					<td class='step-details'><span><font color='blue';font-size:16px; line-height:20px>LOGIN TO APPLICATION AND NAVIGATE TO ADD DEBT PAGE</font></span></td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>10:56:11 PM</td>
+					<td class='step-details'>Reading Maven Command Line Argument : null</td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>10:56:11 PM</td>
+					<td class='step-details'><span ><font color='gold';font-size:10%; line-height:20px>*beforeNavigateTo: Even HandlerBefore Navigating To : http://localhost:3000/signin, my url was: data:,</font></span></td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>10:56:11 PM</td>
+					<td class='step-details'><span ><font color='gold';font-size:10%; line-height:20px>*beforeNavigateTo: Before Navigating To : http://localhost:3000/signin, my url was: data:,</font></span></td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>10:56:11 PM</td>
+					<td class='step-details'><span ><font color='gold';font-size:10%; line-height:20px>*beforeNavigateTo: Even HandlerBefore Navigating To : http://localhost:3000/signin, my url was: data:,</font></span></td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>10:56:12 PM</td>
+					<td class='step-details'><span ><font color='gold';font-size:10%; line-height:20px>*afterNavigateTo: After Navigating To: http://localhost:3000/signin, my url is: http://localhost:3000/signin</font></span></td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>10:56:12 PM</td>
+					<td class='step-details'>URL launched: http://localhost:3000 launched</td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>10:56:12 PM</td>
+					<td class='step-details'><span ><font color='gold';font-size:10%; line-height:20px>*beforeFindBy: Trying to find: 'By.xpath: //input[@name='email']'.</font></span></td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>10:56:12 PM</td>
+					<td class='step-details'><span ><font color='gold';font-size:10%; line-height:20px>*beforeFindBy: Trying to find: By.xpath: //input[@name='email']</font></span></td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>10:56:12 PM</td>
+					<td class='step-details'><span ><font color='gold';font-size:10%; line-height:20px>*afterFindBy: Found: 'By.xpath: //input[@name='email']'.</font></span></td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>10:56:12 PM</td>
+					<td class='step-details'><span ><font color='gold';font-size:10%; line-height:20px>*afterFindBy: Found: By.xpath: //input[@name='email']'.</font></span></td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>10:56:13 PM</td>
+					<td class='step-details'><span ><font color='gold';font-size:10%; line-height:20px>*beforeFindBy: Trying to find: 'By.xpath: //input[@name='email']'.</font></span></td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>10:56:13 PM</td>
+					<td class='step-details'><span ><font color='gold';font-size:10%; line-height:20px>*beforeFindBy: Trying to find: By.xpath: //input[@name='email']</font></span></td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>10:56:13 PM</td>
+					<td class='step-details'><span ><font color='gold';font-size:10%; line-height:20px>*afterFindBy: Found: 'By.xpath: //input[@name='email']'.</font></span></td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>10:56:13 PM</td>
+					<td class='step-details'><span ><font color='gold';font-size:10%; line-height:20px>*afterFindBy: Found: By.xpath: //input[@name='email']'.</font></span></td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>10:56:13 PM</td>
+					<td class='step-details'><span style='font-weight:bold;'><font color='green';font-size:16px; line-height:20px>Wait for Page [Page Navigation] - WaitForPage Successful - Navigated To: com.otaras.testautomation.aut.buildprojectbusinessmodules.ford.login.LoginPage@534ca02b</font></span></td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>10:56:13 PM</td>
+					<td class='step-details'><span ><font color='gold';font-size:10%; line-height:20px>*beforeFindBy: Trying to find: 'By.xpath: //button[contains(text(),'Sign In')]'.</font></span></td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>10:56:13 PM</td>
+					<td class='step-details'><span ><font color='gold';font-size:10%; line-height:20px>*beforeFindBy: Trying to find: By.xpath: //button[contains(text(),'Sign In')]</font></span></td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>10:56:13 PM</td>
+					<td class='step-details'><span ><font color='gold';font-size:10%; line-height:20px>*afterFindBy: Found: 'By.xpath: //button[contains(text(),'Sign In')]'.</font></span></td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>10:56:13 PM</td>
+					<td class='step-details'><span ><font color='gold';font-size:10%; line-height:20px>*afterFindBy: Found: By.xpath: //button[contains(text(),'Sign In')]'.</font></span></td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>10:56:13 PM</td>
+					<td class='step-details'><span ><font color='gold';font-size:10%; line-height:20px>*beforeScript: beforeScript</font></span></td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>10:56:13 PM</td>
+					<td class='step-details'><span ><font color='gold';font-size:10%; line-height:20px>*afterScript: afterScript: arguments[0].removeAttribute('disabled','disabled'):ChromeDriver: chrome on XP (d172904f16fb53261d9eb5735c9df50d)</font></span></td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>10:56:13 PM</td>
+					<td class='step-details'><span ><font color='gold';font-size:10%; line-height:20px>*beforeFindBy: Trying to find: 'By.xpath: //input[@name='password']'.</font></span></td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>10:56:13 PM</td>
+					<td class='step-details'><span ><font color='gold';font-size:10%; line-height:20px>*beforeFindBy: Trying to find: By.xpath: //input[@name='password']</font></span></td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>10:56:13 PM</td>
+					<td class='step-details'><span ><font color='gold';font-size:10%; line-height:20px>*afterFindBy: Found: 'By.xpath: //input[@name='password']'.</font></span></td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>10:56:13 PM</td>
+					<td class='step-details'><span ><font color='gold';font-size:10%; line-height:20px>*afterFindBy: Found: By.xpath: //input[@name='password']'.</font></span></td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>10:56:13 PM</td>
+					<td class='step-details'><span ><font color='gold';font-size:10%; line-height:20px>*beforeFindBy: Trying to find: 'By.xpath: //input[@name='password']'.</font></span></td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>10:56:13 PM</td>
+					<td class='step-details'><span ><font color='gold';font-size:10%; line-height:20px>*beforeFindBy: Trying to find: By.xpath: //input[@name='password']</font></span></td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>10:56:13 PM</td>
+					<td class='step-details'><span ><font color='gold';font-size:10%; line-height:20px>*afterFindBy: Found: 'By.xpath: //input[@name='password']'.</font></span></td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>10:56:13 PM</td>
+					<td class='step-details'><span ><font color='gold';font-size:10%; line-height:20px>*afterFindBy: Found: By.xpath: //input[@name='password']'.</font></span></td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>10:56:13 PM</td>
+					<td class='step-details'><span ><font color='gold';font-size:10%; line-height:20px>*beforeFindBy: Trying to find: 'By.xpath: //input[@name='password']'.</font></span></td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>10:56:13 PM</td>
+					<td class='step-details'><span ><font color='gold';font-size:10%; line-height:20px>*beforeFindBy: Trying to find: By.xpath: //input[@name='password']</font></span></td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>10:56:13 PM</td>
+					<td class='step-details'><span ><font color='gold';font-size:10%; line-height:20px>*afterFindBy: Found: 'By.xpath: //input[@name='password']'.</font></span></td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>10:56:13 PM</td>
+					<td class='step-details'><span ><font color='gold';font-size:10%; line-height:20px>*afterFindBy: Found: By.xpath: //input[@name='password']'.</font></span></td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>10:56:13 PM</td>
+					<td class='step-details'><span ><font color='gold';font-size:10%; line-height:20px>*beforeFindBy: Trying to find: 'By.xpath: //input[@name='password']'.</font></span></td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>10:56:13 PM</td>
+					<td class='step-details'><span ><font color='gold';font-size:10%; line-height:20px>*beforeFindBy: Trying to find: By.xpath: //input[@name='password']</font></span></td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>10:56:13 PM</td>
+					<td class='step-details'><span ><font color='gold';font-size:10%; line-height:20px>*afterFindBy: Found: 'By.xpath: //input[@name='password']'.</font></span></td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>10:56:13 PM</td>
+					<td class='step-details'><span ><font color='gold';font-size:10%; line-height:20px>*afterFindBy: Found: By.xpath: //input[@name='password']'.</font></span></td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>10:56:13 PM</td>
+					<td class='step-details'><span ><font color='gold';font-size:10%; line-height:20px>*beforeFindBy: Trying to find: 'By.xpath: //input[@name='email']'.</font></span></td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>10:56:13 PM</td>
+					<td class='step-details'><span ><font color='gold';font-size:10%; line-height:20px>*beforeFindBy: Trying to find: By.xpath: //input[@name='email']</font></span></td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>10:56:13 PM</td>
+					<td class='step-details'><span ><font color='gold';font-size:10%; line-height:20px>*afterFindBy: Found: 'By.xpath: //input[@name='email']'.</font></span></td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>10:56:13 PM</td>
+					<td class='step-details'><span ><font color='gold';font-size:10%; line-height:20px>*afterFindBy: Found: By.xpath: //input[@name='email']'.</font></span></td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>10:56:13 PM</td>
+					<td class='step-details'><span style='font-weight:bold;'><font color='green';font-size:16px; line-height:20px>Login Page - enterUsername Successful - [[ChromeDriver: chrome on XP (d172904f16fb53261d9eb5735c9df50d)] -> xpath: //input[@name='email']]</font></span></td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>10:56:13 PM</td>
+					<td class='step-details'><span ><font color='gold';font-size:10%; line-height:20px>*beforeFindBy: Trying to find: 'By.xpath: //input[@name='email']'.</font></span></td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>10:56:13 PM</td>
+					<td class='step-details'><span ><font color='gold';font-size:10%; line-height:20px>*beforeFindBy: Trying to find: By.xpath: //input[@name='email']</font></span></td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>10:56:13 PM</td>
+					<td class='step-details'><span ><font color='gold';font-size:10%; line-height:20px>*afterFindBy: Found: 'By.xpath: //input[@name='email']'.</font></span></td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>10:56:13 PM</td>
+					<td class='step-details'><span ><font color='gold';font-size:10%; line-height:20px>*afterFindBy: Found: By.xpath: //input[@name='email']'.</font></span></td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>10:56:14 PM</td>
+					<td class='step-details'><span ><font color='gold';font-size:10%; line-height:20px>*beforeFindBy: Trying to find: 'By.xpath: //input[@name='email']'.</font></span></td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>10:56:14 PM</td>
+					<td class='step-details'><span ><font color='gold';font-size:10%; line-height:20px>*beforeFindBy: Trying to find: By.xpath: //input[@name='email']</font></span></td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>10:56:14 PM</td>
+					<td class='step-details'><span ><font color='gold';font-size:10%; line-height:20px>*afterFindBy: Found: 'By.xpath: //input[@name='email']'.</font></span></td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>10:56:14 PM</td>
+					<td class='step-details'><span ><font color='gold';font-size:10%; line-height:20px>*afterFindBy: Found: By.xpath: //input[@name='email']'.</font></span></td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>10:56:14 PM</td>
+					<td class='step-details'><span ><font color='gold';font-size:10%; line-height:20px>*beforeFindBy: Trying to find: 'By.xpath: //input[@name='email']'.</font></span></td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>10:56:14 PM</td>
+					<td class='step-details'><span ><font color='gold';font-size:10%; line-height:20px>*beforeFindBy: Trying to find: By.xpath: //input[@name='email']</font></span></td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>10:56:14 PM</td>
+					<td class='step-details'><span ><font color='gold';font-size:10%; line-height:20px>*afterFindBy: Found: 'By.xpath: //input[@name='email']'.</font></span></td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>10:56:14 PM</td>
+					<td class='step-details'><span ><font color='gold';font-size:10%; line-height:20px>*afterFindBy: Found: By.xpath: //input[@name='email']'.</font></span></td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>10:56:14 PM</td>
+					<td class='step-details'><span ><font color='gold';font-size:10%; line-height:20px>*beforeFindBy: Trying to find: 'By.xpath: //input[@name='email']'.</font></span></td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>10:56:14 PM</td>
+					<td class='step-details'><span ><font color='gold';font-size:10%; line-height:20px>*beforeFindBy: Trying to find: By.xpath: //input[@name='email']</font></span></td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>10:56:14 PM</td>
+					<td class='step-details'><span ><font color='gold';font-size:10%; line-height:20px>*afterFindBy: Found: 'By.xpath: //input[@name='email']'.</font></span></td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>10:56:14 PM</td>
+					<td class='step-details'><span ><font color='gold';font-size:10%; line-height:20px>*afterFindBy: Found: By.xpath: //input[@name='email']'.</font></span></td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>10:56:14 PM</td>
+					<td class='step-details'><span ><font color='gold';font-size:10%; line-height:20px>*beforeFindBy: Trying to find: 'By.xpath: //input[@name='email']'.</font></span></td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>10:56:14 PM</td>
+					<td class='step-details'><span ><font color='gold';font-size:10%; line-height:20px>*beforeFindBy: Trying to find: By.xpath: //input[@name='email']</font></span></td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>10:56:14 PM</td>
+					<td class='step-details'><span ><font color='gold';font-size:10%; line-height:20px>*afterFindBy: Found: 'By.xpath: //input[@name='email']'.</font></span></td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>10:56:14 PM</td>
+					<td class='step-details'><span ><font color='gold';font-size:10%; line-height:20px>*afterFindBy: Found: By.xpath: //input[@name='email']'.</font></span></td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>10:56:14 PM</td>
+					<td class='step-details'><span style='font-weight:bold;'><font color='green';font-size:16px; line-height:20px>Login Page - enterUsername Successful - [[ChromeDriver: chrome on XP (d172904f16fb53261d9eb5735c9df50d)] -> xpath: //input[@name='email']]</font></span></td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>10:56:14 PM</td>
+					<td class='step-details'><span ><font color='gold';font-size:10%; line-height:20px>*beforeFindBy: Trying to find: 'By.xpath: //input[@name='email']'.</font></span></td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>10:56:14 PM</td>
+					<td class='step-details'><span ><font color='gold';font-size:10%; line-height:20px>*beforeFindBy: Trying to find: By.xpath: //input[@name='email']</font></span></td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>10:56:14 PM</td>
+					<td class='step-details'><span ><font color='gold';font-size:10%; line-height:20px>*afterFindBy: Found: 'By.xpath: //input[@name='email']'.</font></span></td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>10:56:14 PM</td>
+					<td class='step-details'><span ><font color='gold';font-size:10%; line-height:20px>*afterFindBy: Found: By.xpath: //input[@name='email']'.</font></span></td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>10:56:14 PM</td>
+					<td class='step-details'><span ><font color='gold';font-size:10%; line-height:20px>*beforeClickOn: beforeClickOn</font></span></td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>10:56:14 PM</td>
+					<td class='step-details'><span ><font color='gold';font-size:10%; line-height:20px>*afterClickOn: Clicked Element with: '[[ChromeDriver: chrome on XP (d172904f16fb53261d9eb5735c9df50d)] -> xpath: //input[@name='email']]'</font></span></td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>10:56:14 PM</td>
+					<td class='step-details'><span ><font color='gold';font-size:10%; line-height:20px>*beforeFindBy: Trying to find: 'By.xpath: //input[@name='password']'.</font></span></td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>10:56:14 PM</td>
+					<td class='step-details'><span ><font color='gold';font-size:10%; line-height:20px>*beforeFindBy: Trying to find: By.xpath: //input[@name='password']</font></span></td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>10:56:14 PM</td>
+					<td class='step-details'><span ><font color='gold';font-size:10%; line-height:20px>*afterFindBy: Found: 'By.xpath: //input[@name='password']'.</font></span></td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>10:56:14 PM</td>
+					<td class='step-details'><span ><font color='gold';font-size:10%; line-height:20px>*afterFindBy: Found: By.xpath: //input[@name='password']'.</font></span></td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>10:56:14 PM</td>
+					<td class='step-details'><span ><font color='gold';font-size:10%; line-height:20px>*beforeClickOn: beforeClickOn</font></span></td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>10:56:14 PM</td>
+					<td class='step-details'><span ><font color='gold';font-size:10%; line-height:20px>*afterClickOn: Clicked Element with: '[[ChromeDriver: chrome on XP (d172904f16fb53261d9eb5735c9df50d)] -> xpath: //input[@name='password']]'</font></span></td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>10:56:14 PM</td>
+					<td class='step-details'><span ><font color='gold';font-size:10%; line-height:20px>*beforeFindBy: Trying to find: 'By.xpath: //*[contains(text(),'Sign In')]'.</font></span></td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>10:56:14 PM</td>
+					<td class='step-details'><span ><font color='gold';font-size:10%; line-height:20px>*beforeFindBy: Trying to find: By.xpath: //*[contains(text(),'Sign In')]</font></span></td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>10:56:14 PM</td>
+					<td class='step-details'><span ><font color='gold';font-size:10%; line-height:20px>*afterFindBy: Found: 'By.xpath: //*[contains(text(),'Sign In')]'.</font></span></td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>10:56:14 PM</td>
+					<td class='step-details'><span ><font color='gold';font-size:10%; line-height:20px>*afterFindBy: Found: By.xpath: //*[contains(text(),'Sign In')]'.</font></span></td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>10:56:14 PM</td>
+					<td class='step-details'><span ><font color='gold';font-size:10%; line-height:20px>*beforeFindBy: Trying to find: 'By.xpath: //*[contains(text(),'Sign In')]'.</font></span></td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>10:56:14 PM</td>
+					<td class='step-details'><span ><font color='gold';font-size:10%; line-height:20px>*beforeFindBy: Trying to find: By.xpath: //*[contains(text(),'Sign In')]</font></span></td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>10:56:14 PM</td>
+					<td class='step-details'><span ><font color='gold';font-size:10%; line-height:20px>*afterFindBy: Found: 'By.xpath: //*[contains(text(),'Sign In')]'.</font></span></td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>10:56:14 PM</td>
+					<td class='step-details'><span ><font color='gold';font-size:10%; line-height:20px>*afterFindBy: Found: By.xpath: //*[contains(text(),'Sign In')]'.</font></span></td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>10:56:14 PM</td>
+					<td class='step-details'><span ><font color='gold';font-size:10%; line-height:20px>*beforeClickOn: beforeClickOn</font></span></td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>10:56:14 PM</td>
+					<td class='step-details'><span ><font color='gold';font-size:10%; line-height:20px>*afterClickOn: Clicked Element with: '[[ChromeDriver: chrome on XP (d172904f16fb53261d9eb5735c9df50d)] -> xpath: //*[contains(text(),'Sign In')]]'</font></span></td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>10:56:14 PM</td>
+					<td class='step-details'><span ><font color='gold';font-size:10%; line-height:20px>*beforeFindBy: Trying to find: 'By.xpath: //i[@class='fas fa-cog']'.</font></span></td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>10:56:14 PM</td>
+					<td class='step-details'><span ><font color='gold';font-size:10%; line-height:20px>*beforeFindBy: Trying to find: By.xpath: //i[@class='fas fa-cog']</font></span></td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>10:56:15 PM</td>
+					<td class='step-details'><span ><font color='gold';font-size:10%; line-height:20px>*afterFindBy: Found: 'By.xpath: //i[@class='fas fa-cog']'.</font></span></td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>10:56:15 PM</td>
+					<td class='step-details'><span ><font color='gold';font-size:10%; line-height:20px>*afterFindBy: Found: By.xpath: //i[@class='fas fa-cog']'.</font></span></td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>10:56:15 PM</td>
+					<td class='step-details'><span ><font color='gold';font-size:10%; line-height:20px>*beforeFindBy: Trying to find: 'By.xpath: //i[@class='fas fa-cog']'.</font></span></td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>10:56:15 PM</td>
+					<td class='step-details'><span ><font color='gold';font-size:10%; line-height:20px>*beforeFindBy: Trying to find: By.xpath: //i[@class='fas fa-cog']</font></span></td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>10:56:15 PM</td>
+					<td class='step-details'><span ><font color='gold';font-size:10%; line-height:20px>*afterFindBy: Found: 'By.xpath: //i[@class='fas fa-cog']'.</font></span></td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>10:56:15 PM</td>
+					<td class='step-details'><span ><font color='gold';font-size:10%; line-height:20px>*afterFindBy: Found: By.xpath: //i[@class='fas fa-cog']'.</font></span></td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>10:56:15 PM</td>
+					<td class='step-details'><span style='font-weight:bold;'><font color='green';font-size:16px; line-height:20px>Wait for Page [Page Navigation] - WaitForPage Successful - Navigated To: com.otaras.testautomation.aut.buildprojectbusinessmodules.ford.home.HomePage@4e1ce44</font></span></td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>10:56:15 PM</td>
+					<td class='step-details'><span ><font color='gold';font-size:10%; line-height:20px>*beforeFindBy: Trying to find: 'By.xpath: //div[@id='navMenuDocumentation']//a[contains(text(),'New')]'.</font></span></td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>10:56:15 PM</td>
+					<td class='step-details'><span ><font color='gold';font-size:10%; line-height:20px>*beforeFindBy: Trying to find: By.xpath: //div[@id='navMenuDocumentation']//a[contains(text(),'New')]</font></span></td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>10:56:15 PM</td>
+					<td class='step-details'><span ><font color='gold';font-size:10%; line-height:20px>*afterFindBy: Found: 'By.xpath: //div[@id='navMenuDocumentation']//a[contains(text(),'New')]'.</font></span></td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>10:56:15 PM</td>
+					<td class='step-details'><span ><font color='gold';font-size:10%; line-height:20px>*afterFindBy: Found: By.xpath: //div[@id='navMenuDocumentation']//a[contains(text(),'New')]'.</font></span></td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>10:56:15 PM</td>
+					<td class='step-details'><span ><font color='gold';font-size:10%; line-height:20px>*beforeFindBy: Trying to find: 'By.xpath: //div[@id='navMenuDocumentation']//a[contains(text(),'New')]'.</font></span></td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>10:56:15 PM</td>
+					<td class='step-details'><span ><font color='gold';font-size:10%; line-height:20px>*beforeFindBy: Trying to find: By.xpath: //div[@id='navMenuDocumentation']//a[contains(text(),'New')]</font></span></td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>10:56:15 PM</td>
+					<td class='step-details'><span ><font color='gold';font-size:10%; line-height:20px>*afterFindBy: Found: 'By.xpath: //div[@id='navMenuDocumentation']//a[contains(text(),'New')]'.</font></span></td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>10:56:15 PM</td>
+					<td class='step-details'><span ><font color='gold';font-size:10%; line-height:20px>*afterFindBy: Found: By.xpath: //div[@id='navMenuDocumentation']//a[contains(text(),'New')]'.</font></span></td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>10:56:16 PM</td>
+					<td class='step-details'><span ><font color='gold';font-size:10%; line-height:20px>*beforeFindBy: Trying to find: 'By.xpath: //div[@id='navMenuDocumentation']//a[contains(text(),'New')]'.</font></span></td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>10:56:16 PM</td>
+					<td class='step-details'><span ><font color='gold';font-size:10%; line-height:20px>*beforeFindBy: Trying to find: By.xpath: //div[@id='navMenuDocumentation']//a[contains(text(),'New')]</font></span></td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>10:56:16 PM</td>
+					<td class='step-details'><span ><font color='gold';font-size:10%; line-height:20px>*afterFindBy: Found: 'By.xpath: //div[@id='navMenuDocumentation']//a[contains(text(),'New')]'.</font></span></td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>10:56:16 PM</td>
+					<td class='step-details'><span ><font color='gold';font-size:10%; line-height:20px>*afterFindBy: Found: By.xpath: //div[@id='navMenuDocumentation']//a[contains(text(),'New')]'.</font></span></td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>10:56:16 PM</td>
+					<td class='step-details'><span ><font color='gold';font-size:10%; line-height:20px>*beforeFindBy: Trying to find: 'By.xpath: //div[@id='navMenuDocumentation']//a[contains(text(),'New')]'.</font></span></td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>10:56:16 PM</td>
+					<td class='step-details'><span ><font color='gold';font-size:10%; line-height:20px>*beforeFindBy: Trying to find: By.xpath: //div[@id='navMenuDocumentation']//a[contains(text(),'New')]</font></span></td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>10:56:16 PM</td>
+					<td class='step-details'><span ><font color='gold';font-size:10%; line-height:20px>*afterFindBy: Found: 'By.xpath: //div[@id='navMenuDocumentation']//a[contains(text(),'New')]'.</font></span></td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>10:56:16 PM</td>
+					<td class='step-details'><span ><font color='gold';font-size:10%; line-height:20px>*afterFindBy: Found: By.xpath: //div[@id='navMenuDocumentation']//a[contains(text(),'New')]'.</font></span></td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>10:56:16 PM</td>
+					<td class='step-details'><span ><font color='gold';font-size:10%; line-height:20px>*beforeFindBy: Trying to find: 'By.xpath: //div[@id='navMenuDocumentation']//a[contains(text(),'New')]'.</font></span></td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>10:56:16 PM</td>
+					<td class='step-details'><span ><font color='gold';font-size:10%; line-height:20px>*beforeFindBy: Trying to find: By.xpath: //div[@id='navMenuDocumentation']//a[contains(text(),'New')]</font></span></td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>10:56:16 PM</td>
+					<td class='step-details'><span ><font color='gold';font-size:10%; line-height:20px>*afterFindBy: Found: 'By.xpath: //div[@id='navMenuDocumentation']//a[contains(text(),'New')]'.</font></span></td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>10:56:16 PM</td>
+					<td class='step-details'><span ><font color='gold';font-size:10%; line-height:20px>*afterFindBy: Found: By.xpath: //div[@id='navMenuDocumentation']//a[contains(text(),'New')]'.</font></span></td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>10:56:16 PM</td>
+					<td class='step-details'><span ><font color='gold';font-size:10%; line-height:20px>*beforeFindBy: Trying to find: 'By.xpath: //div[@id='navMenuDocumentation']//a[contains(text(),'New')]'.</font></span></td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>10:56:16 PM</td>
+					<td class='step-details'><span ><font color='gold';font-size:10%; line-height:20px>*beforeFindBy: Trying to find: By.xpath: //div[@id='navMenuDocumentation']//a[contains(text(),'New')]</font></span></td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>10:56:16 PM</td>
+					<td class='step-details'><span ><font color='gold';font-size:10%; line-height:20px>*afterFindBy: Found: 'By.xpath: //div[@id='navMenuDocumentation']//a[contains(text(),'New')]'.</font></span></td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>10:56:16 PM</td>
+					<td class='step-details'><span ><font color='gold';font-size:10%; line-height:20px>*afterFindBy: Found: By.xpath: //div[@id='navMenuDocumentation']//a[contains(text(),'New')]'.</font></span></td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>10:56:16 PM</td>
+					<td class='step-details'><span ><font color='gold';font-size:10%; line-height:20px>*beforeFindBy: Trying to find: 'By.xpath: //div[@id='navMenuDocumentation']//a[contains(text(),'New')]'.</font></span></td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>10:56:16 PM</td>
+					<td class='step-details'><span ><font color='gold';font-size:10%; line-height:20px>*beforeFindBy: Trying to find: By.xpath: //div[@id='navMenuDocumentation']//a[contains(text(),'New')]</font></span></td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>10:56:16 PM</td>
+					<td class='step-details'><span ><font color='gold';font-size:10%; line-height:20px>*afterFindBy: Found: 'By.xpath: //div[@id='navMenuDocumentation']//a[contains(text(),'New')]'.</font></span></td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>10:56:16 PM</td>
+					<td class='step-details'><span ><font color='gold';font-size:10%; line-height:20px>*afterFindBy: Found: By.xpath: //div[@id='navMenuDocumentation']//a[contains(text(),'New')]'.</font></span></td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>10:56:16 PM</td>
+					<td class='step-details'><span style='font-weight:bold;'><font color='green';font-size:16px; line-height:20px>Menu Selection Page - clickNewMenu Successful - [[ChromeDriver: chrome on XP (d172904f16fb53261d9eb5735c9df50d)] -> xpath: //div[@id='navMenuDocumentation']//a[contains(text(),'New')]]</font></span></td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>10:56:16 PM</td>
+					<td class='step-details'><span ><font color='gold';font-size:10%; line-height:20px>*beforeFindBy: Trying to find: 'By.xpath: //a[@href='/addnew-activity']'.</font></span></td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>10:56:16 PM</td>
+					<td class='step-details'><span ><font color='gold';font-size:10%; line-height:20px>*beforeFindBy: Trying to find: By.xpath: //a[@href='/addnew-activity']</font></span></td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>10:56:16 PM</td>
+					<td class='step-details'><span ><font color='gold';font-size:10%; line-height:20px>*afterFindBy: Found: 'By.xpath: //a[@href='/addnew-activity']'.</font></span></td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>10:56:16 PM</td>
+					<td class='step-details'><span ><font color='gold';font-size:10%; line-height:20px>*afterFindBy: Found: By.xpath: //a[@href='/addnew-activity']'.</font></span></td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>10:56:16 PM</td>
+					<td class='step-details'><span ><font color='gold';font-size:10%; line-height:20px>*beforeFindBy: Trying to find: 'By.xpath: //a[@href='/addnew-activity']'.</font></span></td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>10:56:16 PM</td>
+					<td class='step-details'><span ><font color='gold';font-size:10%; line-height:20px>*beforeFindBy: Trying to find: By.xpath: //a[@href='/addnew-activity']</font></span></td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>10:56:16 PM</td>
+					<td class='step-details'><span ><font color='gold';font-size:10%; line-height:20px>*afterFindBy: Found: 'By.xpath: //a[@href='/addnew-activity']'.</font></span></td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>10:56:16 PM</td>
+					<td class='step-details'><span ><font color='gold';font-size:10%; line-height:20px>*afterFindBy: Found: By.xpath: //a[@href='/addnew-activity']'.</font></span></td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>10:56:16 PM</td>
+					<td class='step-details'><span ><font color='gold';font-size:10%; line-height:20px>*beforeFindBy: Trying to find: 'By.xpath: //a[@href='/addnew-activity']'.</font></span></td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>10:56:16 PM</td>
+					<td class='step-details'><span ><font color='gold';font-size:10%; line-height:20px>*beforeFindBy: Trying to find: By.xpath: //a[@href='/addnew-activity']</font></span></td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>10:56:16 PM</td>
+					<td class='step-details'><span ><font color='gold';font-size:10%; line-height:20px>*afterFindBy: Found: 'By.xpath: //a[@href='/addnew-activity']'.</font></span></td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>10:56:16 PM</td>
+					<td class='step-details'><span ><font color='gold';font-size:10%; line-height:20px>*afterFindBy: Found: By.xpath: //a[@href='/addnew-activity']'.</font></span></td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>10:56:16 PM</td>
+					<td class='step-details'><span ><font color='gold';font-size:10%; line-height:20px>*beforeClickOn: beforeClickOn</font></span></td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>10:56:16 PM</td>
+					<td class='step-details'><span ><font color='gold';font-size:10%; line-height:20px>*afterClickOn: Clicked Element with: '[[ChromeDriver: chrome on XP (d172904f16fb53261d9eb5735c9df50d)] -> xpath: //a[@href='/addnew-activity']]'</font></span></td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>10:56:16 PM</td>
+					<td class='step-details'><span ><font color='gold';font-size:10%; line-height:20px>*beforeFindBy: Trying to find: 'By.xpath: //a[@href='/addnew-activity']'.</font></span></td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>10:56:16 PM</td>
+					<td class='step-details'><span ><font color='gold';font-size:10%; line-height:20px>*beforeFindBy: Trying to find: By.xpath: //a[@href='/addnew-activity']</font></span></td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>10:56:16 PM</td>
+					<td class='step-details'><span ><font color='gold';font-size:10%; line-height:20px>*afterFindBy: Found: 'By.xpath: //a[@href='/addnew-activity']'.</font></span></td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>10:56:16 PM</td>
+					<td class='step-details'><span ><font color='gold';font-size:10%; line-height:20px>*afterFindBy: Found: By.xpath: //a[@href='/addnew-activity']'.</font></span></td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>10:56:16 PM</td>
+					<td class='step-details'><span style='font-weight:bold;'><font color='green';font-size:16px; line-height:20px>Menu Selection Page - clickProjectsSubMenu Successful - [[ChromeDriver: chrome on XP (d172904f16fb53261d9eb5735c9df50d)] -> xpath: //a[@href='/addnew-activity']]</font></span></td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>10:56:16 PM</td>
+					<td class='step-details'><span ><font color='gold';font-size:10%; line-height:20px>*beforeFindBy: Trying to find: 'By.xpath: //a[@href='/createTran/debt']'.</font></span></td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>10:56:16 PM</td>
+					<td class='step-details'><span ><font color='gold';font-size:10%; line-height:20px>*beforeFindBy: Trying to find: By.xpath: //a[@href='/createTran/debt']</font></span></td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>10:56:16 PM</td>
+					<td class='step-details'><span ><font color='gold';font-size:10%; line-height:20px>*afterFindBy: Found: 'By.xpath: //a[@href='/createTran/debt']'.</font></span></td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>10:56:16 PM</td>
+					<td class='step-details'><span ><font color='gold';font-size:10%; line-height:20px>*afterFindBy: Found: By.xpath: //a[@href='/createTran/debt']'.</font></span></td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>10:56:16 PM</td>
+					<td class='step-details'><span ><font color='gold';font-size:10%; line-height:20px>*beforeFindBy: Trying to find: 'By.xpath: //a[@href='/createTran/debt']'.</font></span></td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>10:56:16 PM</td>
+					<td class='step-details'><span ><font color='gold';font-size:10%; line-height:20px>*beforeFindBy: Trying to find: By.xpath: //a[@href='/createTran/debt']</font></span></td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>10:56:16 PM</td>
+					<td class='step-details'><span ><font color='gold';font-size:10%; line-height:20px>*afterFindBy: Found: 'By.xpath: //a[@href='/createTran/debt']'.</font></span></td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>10:56:16 PM</td>
+					<td class='step-details'><span ><font color='gold';font-size:10%; line-height:20px>*afterFindBy: Found: By.xpath: //a[@href='/createTran/debt']'.</font></span></td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>10:56:16 PM</td>
+					<td class='step-details'><span style='font-weight:bold;'><font color='green';font-size:16px; line-height:20px>Wait for Page [Page Navigation] - WaitForPage Successful - Navigated To: com.otaras.testautomation.aut.buildprojectbusinessmodules.ford.newtran.activity.NewActivitySelectionPage@313f8301</font></span></td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>10:56:17 PM</td>
+					<td class='step-details'><span><font color='blue';font-size:16px; line-height:20px>OBJECT ID: 5cf87df082da7e51009f3948</font></span></td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>10:56:17 PM</td>
+					<td class='step-details'><span ><font color='gold';font-size:10%; line-height:20px>*beforeNavigateTo: Even HandlerBefore Navigating To : http://localhost:3000/deals/5cf87df082da7e51009f3948/participants, my url was: http://localhost:3000/addnew-activity</font></span></td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>10:56:17 PM</td>
+					<td class='step-details'><span ><font color='gold';font-size:10%; line-height:20px>*beforeNavigateTo: Before Navigating To : http://localhost:3000/deals/5cf87df082da7e51009f3948/participants, my url was: http://localhost:3000/addnew-activity</font></span></td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>10:56:17 PM</td>
+					<td class='step-details'><span ><font color='gold';font-size:10%; line-height:20px>*beforeNavigateTo: Even HandlerBefore Navigating To : http://localhost:3000/deals/5cf87df082da7e51009f3948/participants, my url was: http://localhost:3000/addnew-activity</font></span></td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>10:56:17 PM</td>
+					<td class='step-details'><span ><font color='gold';font-size:10%; line-height:20px>*afterNavigateTo: After Navigating To: http://localhost:3000/deals/5cf87df082da7e51009f3948/participants, my url is: http://localhost:3000/deals/5cf87df082da7e51009f3948/participants</font></span></td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>10:56:17 PM</td>
+					<td class='step-details'><span ><font color='gold';font-size:10%; line-height:20px>*beforeFindBy: Trying to find: 'By.xpath: //*[contains(text(),'Add')]/parent::div'.</font></span></td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>10:56:17 PM</td>
+					<td class='step-details'><span ><font color='gold';font-size:10%; line-height:20px>*beforeFindBy: Trying to find: By.xpath: //*[contains(text(),'Add')]/parent::div</font></span></td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>10:56:18 PM</td>
+					<td class='step-details'><span ><font color='gold';font-size:10%; line-height:20px>*afterFindBy: Found: 'By.xpath: //*[contains(text(),'Add')]/parent::div'.</font></span></td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>10:56:18 PM</td>
+					<td class='step-details'><span ><font color='gold';font-size:10%; line-height:20px>*afterFindBy: Found: By.xpath: //*[contains(text(),'Add')]/parent::div'.</font></span></td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>10:56:19 PM</td>
+					<td class='step-details'><span ><font color='gold';font-size:10%; line-height:20px>*beforeFindBy: Trying to find: 'By.xpath: //*[contains(text(),'Add')]/parent::div'.</font></span></td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>10:56:19 PM</td>
+					<td class='step-details'><span ><font color='gold';font-size:10%; line-height:20px>*beforeFindBy: Trying to find: By.xpath: //*[contains(text(),'Add')]/parent::div</font></span></td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>10:56:19 PM</td>
+					<td class='step-details'><span ><font color='gold';font-size:10%; line-height:20px>*afterFindBy: Found: 'By.xpath: //*[contains(text(),'Add')]/parent::div'.</font></span></td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>10:56:19 PM</td>
+					<td class='step-details'><span ><font color='gold';font-size:10%; line-height:20px>*afterFindBy: Found: By.xpath: //*[contains(text(),'Add')]/parent::div'.</font></span></td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>10:56:19 PM</td>
+					<td class='step-details'><span style='font-weight:bold;'><font color='green';font-size:16px; line-height:20px>Wait for Page [Page Navigation] - WaitForPage Successful - Navigated To: com.otaras.testautomation.aut.buildprojectbusinessmodules.ford.newtran.activity.DebtParticipantsPage@3382cf68</font></span></td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>10:56:19 PM</td>
+					<td class='step-details'><span><font color='blue';font-size:16px; line-height:20px>DEBT - BONDS - PARTICIPANTS UPDATE</font></span></td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>10:56:19 PM</td>
+					<td class='step-details'><span><font color='blue';font-size:16px; line-height:20px>Participant URL: http://localhost:3000/deals/5cf87df082da7e51009f3948/participants</font></span></td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>10:56:19 PM</td>
+					<td class='step-details'>Entered - enterDebtParticipants_BondIssue</td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>10:56:19 PM</td>
+					<td class='step-details'><span ><font color='gold';font-size:10%; line-height:20px>*beforeFindBy: Trying to find: 'By.xpath: //*[contains(text(),'Underwriting Team')]/parent::div//button[contains(text(),'Reset')]'.</font></span></td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>10:56:19 PM</td>
+					<td class='step-details'><span ><font color='gold';font-size:10%; line-height:20px>*beforeFindBy: Trying to find: By.xpath: //*[contains(text(),'Underwriting Team')]/parent::div//button[contains(text(),'Reset')]</font></span></td>
+				</tr>
+				<tr class='log' status='fatal'>
+					<td class='status fatal' title='fatal' alt='fatal'><i class='material-icons'>cancel</i></td>
+					<td class='timestamp'>10:56:39 PM</td>
+					<td class='step-details'><span style='font-weight:bold;'><font color='red';font-size:16px; line-height:20px>Projects New Deal Transaction Page - enterDebtParticipants_BondIssue - unable to enter dataorg.openqa.selenium.NoSuchElementException: no such element: Unable to locate element: {"method":"xpath","selector":"//*[contains(text(),'Underwriting Team')]/parent::div//button[contains(text(),'Reset')]"}
+  (Session info: chrome=74.0.3729.169)
+  (Driver info: chromedriver=74.0.3729.6 (255758eccf3d244491b8a1317aa76e1ce10d57e9-refs/branch-heads/3729@{#29}),platform=Windows NT 10.0.17134 x86_64) (WARNING: The server did not provide any stacktrace information)
+Command duration or timeout: 0 milliseconds
+For documentation on this error, please visit: http://seleniumhq.org/exceptions/no_such_element.html
+Build info: version: '3.12.0', revision: '7c6e0b3', time: '2018-05-08T14:04:26.12Z'
+System info: host: 'LAPTOP-9D0T83F5', ip: '10.1.0.4', os.name: 'Windows 10', os.arch: 'amd64', os.version: '10.0', java.version: '1.8.0_181'
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Capabilities {acceptInsecureCerts: false, acceptSslCerts: false, applicationCacheEnabled: false, browserConnectionEnabled: false, browserName: chrome, chrome: {chromedriverVersion: 74.0.3729.6 (255758eccf3d24..., userDataDir: C:\Users\ADIT_A~1\AppData\L...}, cssSelectorsEnabled: true, databaseEnabled: false, goog:chromeOptions: {debuggerAddress: localhost:18255}, handlesAlerts: true, hasTouchScreen: false, javascriptEnabled: true, locationContextEnabled: true, mobileEmulationEnabled: false, nativeEvents: true, networkConnectionEnabled: false, pageLoadStrategy: normal, platform: XP, platformName: XP, proxy: Proxy(), rotatable: false, setWindowRect: true, strictFileInteractability: false, takesHeapSnapshot: true, takesScreenshot: true, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unexpectedAlertBehaviour: ignore, unhandledPromptBehavior: ignore, version: 74.0.3729.169, webStorageEnabled: true}
+Session ID: d172904f16fb53261d9eb5735c9df50d
+*** Element info: {Using=xpath, value=//*[contains(text(),'Underwriting Team')]/parent::div//button[contains(text(),'Reset')]}</font></span></td>
+				</tr>
+				<tr class='log' status='fatal'>
+					<td class='status fatal' title='fatal' alt='fatal'><i class='material-icons'>cancel</i></td>
+					<td class='timestamp'>10:56:39 PM</td>
+					<td class='step-details'><span style='font-weight:bold;'><font color='red';font-size:16px; line-height:20px>Error found at class: com.otaras.testautomation.aut.buildprojectbusinessmodules.ford.newtran.activity.DebtParticipantsPage Code line Number: 204!</font></span></td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>10:56:39 PM</td>
+					<td class='step-details'><span><font color='blue';font-size:16px; line-height:20px>EXCEPTION BLOCK</font></span></td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>10:56:39 PM</td>
+					<td class='step-details'>details</td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>10:56:39 PM</td>
+					<td class='step-details'>#TAKE SCREENSHOTMuniVisor - By Otaras * SCREENSHOT CAPTURED *</td>
+				</tr>
+				<tr class='log' status='fatal'>
+					<td class='status fatal' title='fatal' alt='fatal'><i class='material-icons'>cancel</i></td>
+					<td class='timestamp'>10:56:39 PM</td>
+					<td class='step-details'><span><font color='red';font-size:16px; line-height:20px>Entered Test 'Exception' Block-: ******** Exception Found - Test Scenario Execution Incomplete ********</font></span></td>
+				</tr>
+				<tr class='log' status='fatal'>
+					<td class='status fatal' title='fatal' alt='fatal'><i class='material-icons'>cancel</i></td>
+					<td class='timestamp'>10:56:39 PM</td>
+					<td class='step-details'><span><font color='red';font-size:16px; line-height:20px>TEST FAILED - EXCEPTION: enterDebtParticipants_BondIssue - Deal data enty failed
+For documentation on this error, please visit: http://seleniumhq.org/exceptions/no_such_element.html
+Build info: version: '3.12.0', revision: '7c6e0b3', time: '2018-05-08T14:04:26.12Z'
+System info: host: 'LAPTOP-9D0T83F5', ip: '10.1.0.4', os.name: 'Windows 10', os.arch: 'amd64', os.version: '10.0', java.version: '1.8.0_181'
+Driver info: driver.version: unknown</font></span></td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>10:56:39 PM</td>
+					<td class='step-details'><span><font color='blue';font-size:16px; line-height:20px>TEST EXECUTION INCOMPLETE</font></span></td>
+				</tr>
+				<tr class='log' status='fatal'>
+					<td class='status fatal' title='fatal' alt='fatal'><i class='material-icons'>cancel</i></td>
+					<td class='timestamp'>10:56:39 PM</td>
+					<td class='step-details'><span><font color='red';font-size:16px; line-height:20px>##################TEST STATUS: ##################Test FAILED</font></span></td>
+				</tr>
+				<tr class='log' status='fatal'>
+					<td class='status fatal' title='fatal' alt='fatal'><i class='material-icons'>cancel</i></td>
+					<td class='timestamp'>10:56:41 PM</td>
+					<td class='step-details'>TEST SCENARIO EXECUTION INCOMPLETE</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>10:56:41 PM</td>
+					<td class='step-details'>DB Update Done</td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>10:56:42 PM</td>
+					<td class='step-details'><span><font color='blue';font-size:16px; line-height:20px>Test Execution Tme in Sec: 37  -------------------- Execution Time in mins:  0</font></span></td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+							<ul class='screenshots'>
+								<li><img data-featherlight='screenshots//Wed_Jun_05_22_56_39_EDT_20193.png' width='10%' src='screenshots//Wed_Jun_05_22_56_39_EDT_20193.png' data-src='screenshots//Wed_Jun_05_22_56_39_EDT_20193.png'></li>
+							</ul>
+					</div>
+				</li>
+			</ul>
+		</div>
+	</div>
+	<!-- subview left -->
+
+	<div class='subview-right left'>
+		<div class='view-summary'>
+			<h5 class='test-name'></h5>
+
+			<div id='step-filters' class="right">
+				<span class="blue-text" status="info" alt="info" title="info"><i class="material-icons">info_outline</i></span>
+				<span class="green-text" status="pass" alt="pass" title="pass"><i class="material-icons">check_circle</i></span>
+				<span class="red-text" status="fail" alt="fail" title="fail"><i class="material-icons">cancel</i></span>
+				<span class="red-text text-darken-4" status="fatal" alt="fatal" title="fatal"><i class="material-icons">cancel</i></span>
+				<span class="pink-text text-lighten-1" status="error" alt="error" title="error"><i class="material-icons">error</i></span>
+				<span class="orange-text" alt="warning" status="warning" title="warning"><i class="material-icons">warning</i></span>
+				<span class="teal-text" status="skip" alt="skip" title="skip"><i class="material-icons">redo</i></span>
+				<span status="clear" alt="Clear filters" title="Clear filters"><i class="material-icons">clear</i></span>
+			</div>
+		</div>
+	</div>
+	<!-- subview right -->
+
+</div>
+<!-- test view -->
+<!-- category view -->
+<!-- exception view -->
+<div id='dashboard-view' class='view hide'>
+	<div class='card-panel transparent np-v'>
+		<h5>Dashboard</h5>
+
+		<div class='row'>
+			<div class='col s2'>
+				<div class='card-panel r'>
+					Tests
+					<div class='panel-lead'>1</div>
+				</div>
+			</div>
+			<div class='col s2'>
+				<div class='card-panel r'>
+					Steps
+					<div class='panel-lead'>190</div>
+				</div>
+			</div>
+			<div class='col s2'>
+				<div class='card-panel r'>
+					Start
+					<div class='panel-lead'>Jun 5, 2019 10:56:05 PM</div>
+				</div>
+			</div>
+			<div class='col s2'>
+				<div class='card-panel r'>
+			 		End
+			 		<div class='panel-lead'>Jun 5, 2019 10:56:42 PM</div>
+				</div>
+			</div>
+			<div class='col s2'>
+				<div class='card-panel r'>
+					Time Taken
+					<div class='panel-lead'>0h 0m 37s+296ms</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<!-- dashboard view -->
+<!-- testrunner-logs view -->
+		</div>
+		<!-- container -->
+
+		<script>
+			var statusGroup = {
+				passParent: 0,
+				failParent: 0,
+				fatalParent: 1,
+				errorParent: 0,
+				warningParent: 0,
+				skipParent: 0,
+				exceptionsParent: 1,
+				
+				passChild: 10,
+				failChild: 0,
+				fatalChild: 6,
+				errorChild: 0,
+				warningChild: 0,
+				skipChild: 0,
+				infoChild: 174,
+				exceptionsChild: 6,
+				
+				passGrandChild: 0,
+				failGrandChild: 0,
+				fatalGrandChild: 0,
+				errorGrandChild: 0,
+				warningGrandChild: 0,
+				skipGrandChild: 0,
+				infoGrandChild: 0,
+				exceptionsGrandChild: 0,
+			};
+		</script>
+		
+			<script src='https://cdn.rawgit.com/anshooarora/extentreports-java/fca20fb7653aade98810546ab96a2a4360e3e712/dist/js/extent.js' type='text/javascript'></script>
+		
+		
+ 		<script type='text/javascript'>
+ 			
+            
+                $(document).ready(function() {
+                    
+                });
+            
+        
+ 		</script>
+	</body>
+	
+</html>

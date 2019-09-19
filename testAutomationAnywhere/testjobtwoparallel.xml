@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Test-class Suite" parallel="tests" thread-count="10">
+<!-- <suite name="Test-class Suite" thread-count="2">-->
+   
+    
+     <test name="Test-class test 17">
+        <parameter name="test-name" value="test-method Seventeen" />
+         <parameter name="testBrowserXML" value="chrome" />
+        <classes>
+               <class name="com.otaras.testautomation.testscripts.apptest.ford.functionaltest.newtran.activity.DebtBondDetailTest" />
+        </classes>
+    </test>
+    
+        <test name="Test-class test 18">
+        <parameter name="test-name" value="test-method Eighteen" />
+         <parameter name="testBrowserXML" value="chrome" />
+        <classes>
+               <class name="com.otaras.testautomation.testscripts.apptest.ford.functionaltest.newtran.activity.DebtBankLoanDetailTest" />
+        </classes>
+    </test>
+    
+         <!--    <test name="Test-class test 19">
+        <parameter name="test-name" value="test-method Ninteen" />
+         <parameter name="testBrowserXML" value="chrome" />
+        <classes>
+               <class name="com.otaras.testautomation.testscripts.apptest.ford.functionaltest.newtran.activity.DebtDerivativeDetailTest" />
+        </classes>
+    </test> -->
+                <test name="Test-class test 20">
+        <parameter name="test-name" value="test-method Twenty" />
+         <parameter name="testBrowserXML" value="chrome" />
+        <classes>
+               <class name="com.otaras.testautomation.testscripts.apptest.ford.functionaltest.newtran.activity.DebtMARFPDetailTest" />
+        </classes>
+    </test>
+                    <test name="Test-class test 21">
+        <parameter name="test-name" value="test-method TwentyOne" />
+         <parameter name="testBrowserXML" value="chrome" />
+        <classes>
+               <class name="com.otaras.testautomation.testscripts.apptest.ford.functionaltest.newtran.activity.DebtOtherActivityDetailTest" />
+        </classes>
+    </test>
+    
+       <test name="Test-class test 22">
+        <parameter name="test-name" value="test-method TwentyTwo" />
+         <parameter name="testBrowserXML" value="chrome" />
+        <classes>
+               <class name="com.otaras.testautomation.testscripts.apptest.ford.functionaltest.newtran.activity.DebtBondParticipantsTest" />
+        </classes>
+        </test>
+        
+              <test name="Test-class test 23">
+        <parameter name="test-name" value="test-method TwentyThree" />
+         <parameter name="testBrowserXML" value="chrome" />
+        <classes>
+               <class name="com.otaras.testautomation.testscripts.apptest.ford.functionaltest.newtran.activity.DebtBondPricingTest" />
+        </classes>
+        </test> 
+        
+                    <test name="Test-class test 24">
+        <parameter name="test-name" value="test-method TwentyFour" />
+         <parameter name="testBrowserXML" value="chrome" />
+        <classes>
+               <class name="com.otaras.testautomation.testscripts.apptest.ford.functionaltest.newtran.activity.DebtBondDocumentsTest" />
+        </classes>
+        </test> 
+        
+       <!--  <test name="Test-class test 25">
+        <parameter name="test-name" value="test-method TwentyFive" />
+         <parameter name="testBrowserXML" value="chrome" />
+        <classes>
+               <class name="com.otaras.testautomation.testscripts.apptest.ford.functionaltest.newtran.activity.DebtBondRatingTest" />
+        </classes>
+        </test>  -->
+        
+     <!--   <test name="Test-class test 26">
+        <parameter name="test-name" value="test-method TwentySix" />
+         <parameter name="testBrowserXML" value="chrome" />
+        <classes>
+               <class name="com.otaras.testautomation.testscripts.apptest.ford.functionaltest.newtran.activity.TradeSwapTest" />
+        </classes>
+        </test>  -->
+        
+     
+</suite>
+
+   
+  

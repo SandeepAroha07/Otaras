@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Test-class Suite">
+<!-- <suite name="Test-class Suite" thread-count="2">-->
+   
+      
+   
+    <test name="Test-class test 6">
+        <parameter name="test-name" value="test-method One" /> 
+         <parameter name="testBrowserXML" value="chrome" />
+        <classes>
+             <class name="com.otaras.testautomation.testscripts.apptest.ford.functionaltest.newtran.activity.DebtBondAddTest" />
+        </classes>
+    </test>
+    
+     
+     <test name="Test-class test 11">
+        <parameter name="test-name" value="test-method One" />
+         <parameter name="testBrowserXML" value="chrome" />
+        <classes>
+               <class name="com.otaras.testautomation.testscripts.apptest.ford.functionaltest.newtran.activity.DebtBondDetailTest" />
+        </classes>
+    </test>
+    
+       <test name="Test-class test 12">
+        <parameter name="test-name" value="test-method One" />
+         <parameter name="testBrowserXML" value="chrome" />
+        <classes>
+               <class name="com.otaras.testautomation.testscripts.apptest.ford.functionaltest.newtran.activity.DebtBondParticipantsTest" />
+        </classes>
+        </test>
+        
+      
+        
+    
+</suite>
